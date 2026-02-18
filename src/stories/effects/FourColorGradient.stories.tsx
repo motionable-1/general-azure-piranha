@@ -7,11 +7,16 @@ const meta: Meta<typeof FourColorGradient> = {
   title: "Effects/FourColorGradient",
   component: FourColorGradient,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
   decorators: [
     (Story) => (
-      <RemotionWrapper durationInFrames={300} fps={30} width={1280} height={720}>
+      <RemotionWrapper
+        durationInFrames={300}
+        fps={30}
+        width={1280}
+        height={720}
+      >
         <Story />
       </RemotionWrapper>
     ),

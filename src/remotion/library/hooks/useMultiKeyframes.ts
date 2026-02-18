@@ -25,7 +25,7 @@ export type MultiKeyframe<T> = {
  */
 export const useMultiKeyframes = <T extends Record<string, number>>(
   keyframes: MultiKeyframe<T>[],
-  defaults: T
+  defaults: T,
 ): T => {
   const frame = useCurrentFrame();
 
@@ -48,7 +48,7 @@ export const useMultiKeyframes = <T extends Record<string, number>>(
     result[prop] = interpolateKeyframes(
       frame,
       propKeyframes,
-      defaults[prop]
+      defaults[prop],
     ) as T[keyof T];
   });
 

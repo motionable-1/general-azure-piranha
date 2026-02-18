@@ -14,7 +14,10 @@ const meta: Meta<typeof Divider> = {
     ),
   ],
   argTypes: {
-    dividerStyle: { control: "select", options: ["line", "gradient", "dashed", "dots", "glow"] },
+    dividerStyle: {
+      control: "select",
+      options: ["line", "gradient", "dashed", "dots", "glow"],
+    },
     color: { control: "color" },
     thickness: { control: { type: "range", min: 1, max: 6, step: 1 } },
   },
@@ -25,10 +28,36 @@ type Story = StoryObj<typeof Divider>;
 
 export const AllStyles: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 40 }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 40,
+      }}
+    >
       {(["line", "gradient", "dashed", "dots", "glow"] as const).map((s, i) => (
-        <div key={s} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
-          <span style={{ color: "#fff8", fontSize: 12, fontFamily: "system-ui", textTransform: "uppercase", letterSpacing: 2 }}>{s}</span>
+        <div
+          key={s}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 8,
+          }}
+        >
+          <span
+            style={{
+              color: "#fff8",
+              fontSize: 12,
+              fontFamily: "system-ui",
+              textTransform: "uppercase",
+              letterSpacing: 2,
+            }}
+          >
+            {s}
+          </span>
           <Divider
             dividerStyle={s}
             color={["#fff", "#FF6B6B", "#4ECDC4", "#A78BFA", "#FFE66D"][i]}

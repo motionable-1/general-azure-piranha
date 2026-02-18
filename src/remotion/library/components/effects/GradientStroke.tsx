@@ -64,11 +64,16 @@ export const GradientStroke: React.FC<GradientStrokeProps> = ({
   const delayFrames = Math.round(delay * fps);
   const drawFrames = Math.max(1, Math.round(drawIn * fps));
 
-  const drawProgress = interpolate(frame - delayFrames, [0, drawFrames], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: Easing.out(Easing.cubic),
-  });
+  const drawProgress = interpolate(
+    frame - delayFrames,
+    [0, drawFrames],
+    [0, 1],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+      easing: Easing.out(Easing.cubic),
+    },
+  );
 
   const angle = (time * rotationSpeed) % 360;
 
@@ -132,7 +137,12 @@ export const GradientStroke: React.FC<GradientStrokeProps> = ({
             alignItems: "center",
             justifyContent: "center",
             overflow: "hidden",
-            borderRadius: shape === "circle" ? "50%" : shape === "rounded" ? borderRadius - thickness : 0,
+            borderRadius:
+              shape === "circle"
+                ? "50%"
+                : shape === "rounded"
+                  ? borderRadius - thickness
+                  : 0,
           }}
         >
           {children}

@@ -14,7 +14,17 @@ const meta: Meta<typeof TitleCard> = {
     ),
   ],
   argTypes: {
-    titleStyle: { control: "select", options: ["minimal", "bold", "cinematic", "editorial", "stacked", "reveal"] },
+    titleStyle: {
+      control: "select",
+      options: [
+        "minimal",
+        "bold",
+        "cinematic",
+        "editorial",
+        "stacked",
+        "reveal",
+      ],
+    },
     titleFontSize: { control: { type: "range", min: 32, max: 120, step: 4 } },
     titleColor: { control: "color" },
     accentColor: { control: "color" },
@@ -34,16 +44,53 @@ export const AllStyles: Story = {
     ),
   ],
   render: () => (
-    <AbsoluteFill style={{ display: "flex", flexWrap: "wrap", gap: 40, padding: 40, alignItems: "center", justifyContent: "center" }}>
-      {(["minimal", "bold", "cinematic", "editorial", "stacked", "reveal"] as const).map((s, i) => (
-        <div key={s} style={{ width: "45%", height: 180, position: "relative", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: 40,
+        padding: 40,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      {(
+        [
+          "minimal",
+          "bold",
+          "cinematic",
+          "editorial",
+          "stacked",
+          "reveal",
+        ] as const
+      ).map((s, i) => (
+        <div
+          key={s}
+          style={{
+            width: "45%",
+            height: 180,
+            position: "relative",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <TitleCard
             title="MOTION"
             subtitle={`${s} style`}
             titleStyle={s}
             titleFontSize={48}
             delay={i * 0.4}
-            accentColor={["#4ECDC4", "#FF6B6B", "#FFE066", "#A78BFA", "#F472B6", "#34D399"][i]}
+            accentColor={
+              [
+                "#4ECDC4",
+                "#FF6B6B",
+                "#FFE066",
+                "#A78BFA",
+                "#F472B6",
+                "#34D399",
+              ][i]
+            }
           />
         </div>
       ))}
@@ -53,7 +100,13 @@ export const AllStyles: Story = {
 
 export const Cinematic: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <TitleCard
         title="THE DOCUMENTARY"
         subtitle="A Story Worth Telling"
@@ -68,7 +121,13 @@ export const Cinematic: Story = {
 
 export const Editorial: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <TitleCard
         title="Design Systems"
         subtitle="Building for Scale"
@@ -83,7 +142,13 @@ export const Editorial: Story = {
 
 export const BoldReveal: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <TitleCard
         title="BOLD"
         subtitle="Make a Statement"

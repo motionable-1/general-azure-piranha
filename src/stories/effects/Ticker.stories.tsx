@@ -26,7 +26,12 @@ type Story = StoryObj<typeof Ticker>;
 
 export const NewsTicker: Story = {
   args: {
-    items: ["BREAKING NEWS", "Markets rally 3% on trade deal", "Tech earnings exceed expectations", "Weather alert: storms expected Friday"],
+    items: [
+      "BREAKING NEWS",
+      "Markets rally 3% on trade deal",
+      "Tech earnings exceed expectations",
+      "Weather alert: storms expected Friday",
+    ],
     speed: 120,
     fontSize: 28,
     color: "#ffffff",
@@ -34,8 +39,20 @@ export const NewsTicker: Story = {
     separatorColor: "#FF6B6B",
   },
   render: (args) => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-      <div style={{ width: "100%", background: "rgba(0,0,0,0.6)", padding: "12px 0" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          background: "rgba(0,0,0,0.6)",
+          padding: "12px 0",
+        }}
+      >
         <Ticker {...args} />
       </div>
     </AbsoluteFill>
@@ -44,7 +61,13 @@ export const NewsTicker: Story = {
 
 export const BrandScroll: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Ticker
         items={["DESIGN", "MOTION", "CREATIVE", "STUDIO", "BRAND"]}
         speed={80}
@@ -60,10 +83,22 @@ export const BrandScroll: Story = {
 
 export const VerticalScroll: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <div style={{ height: 200, overflow: "hidden" }}>
         <Ticker
-          items={["React", "TypeScript", "Remotion", "Motion Design", "Animation"]}
+          items={[
+            "React",
+            "TypeScript",
+            "Remotion",
+            "Motion Design",
+            "Animation",
+          ]}
           direction="up"
           speed={60}
           fontSize={24}

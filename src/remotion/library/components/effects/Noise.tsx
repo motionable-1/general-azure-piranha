@@ -18,7 +18,10 @@ export interface NoiseProps {
   style?: React.CSSProperties;
 }
 
-const NOISE_CONFIG: Record<NoiseType, { baseFrequency: number; octaves: number }> = {
+const NOISE_CONFIG: Record<
+  NoiseType,
+  { baseFrequency: number; octaves: number }
+> = {
   grain: { baseFrequency: 0.65, octaves: 4 },
   static: { baseFrequency: 0.8, octaves: 2 },
   subtle: { baseFrequency: 0.5, octaves: 6 },
@@ -69,10 +72,7 @@ export const Noise: React.FC<NoiseProps> = ({
               seed={seed}
               stitchTiles="stitch"
             />
-            <feColorMatrix
-              type="saturate"
-              values="0"
-            />
+            <feColorMatrix type="saturate" values="0" />
             <feComponentTransfer>
               <feFuncA type="linear" slope={intensity} />
             </feComponentTransfer>

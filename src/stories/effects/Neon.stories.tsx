@@ -31,9 +31,17 @@ export const Default: Story = {
     flicker: 0.05,
   },
   render: (args) => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Neon {...args}>
-        <div style={{ fontSize: 64, fontWeight: 700, fontFamily: "system-ui" }}>OPEN</div>
+        <div style={{ fontSize: 64, fontWeight: 700, fontFamily: "system-ui" }}>
+          OPEN
+        </div>
       </Neon>
     </AbsoluteFill>
   ),
@@ -48,9 +56,22 @@ export const FlickeringSign: Story = {
     ),
   ],
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Neon color="#ff0055" glow={25} flicker={0.15} flickerSpeed={2}>
-        <div style={{ fontSize: 56, fontWeight: 800, fontFamily: "system-ui", letterSpacing: 4 }}>
+        <div
+          style={{
+            fontSize: 56,
+            fontWeight: 800,
+            fontFamily: "system-ui",
+            letterSpacing: 4,
+          }}
+        >
           BAR
         </div>
       </Neon>
@@ -67,9 +88,28 @@ export const NeonBox: Story = {
     ),
   ],
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-      <Neon color="#00ffff" glow={20} borderWidth={2} borderRadius={16} flicker={0.03}>
-        <div style={{ padding: "20px 40px", fontSize: 24, fontWeight: 600, fontFamily: "system-ui" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Neon
+        color="#00ffff"
+        glow={20}
+        borderWidth={2}
+        borderRadius={16}
+        flicker={0.03}
+      >
+        <div
+          style={{
+            padding: "20px 40px",
+            fontSize: 24,
+            fontWeight: 600,
+            fontFamily: "system-ui",
+          }}
+        >
           Neon Border
         </div>
       </Neon>
@@ -96,17 +136,31 @@ export const MultipleColors: Story = {
       }}
     >
       <Neon color="#ff0055" glow={20} flicker={0.1} flickerSpeed={1.5}>
-        <div style={{ fontSize: 48, fontWeight: 800, fontFamily: "system-ui" }}>CASINO</div>
+        <div style={{ fontSize: 48, fontWeight: 800, fontFamily: "system-ui" }}>
+          CASINO
+        </div>
       </Neon>
       <div style={{ display: "flex", gap: 40 }}>
         <Neon color="#00ff88" glow={15} flicker={0.05}>
-          <div style={{ fontSize: 28, fontWeight: 600, fontFamily: "system-ui" }}>SLOTS</div>
+          <div
+            style={{ fontSize: 28, fontWeight: 600, fontFamily: "system-ui" }}
+          >
+            SLOTS
+          </div>
         </Neon>
         <Neon color="#ffaa00" glow={15} flicker={0.08} flickerSpeed={3}>
-          <div style={{ fontSize: 28, fontWeight: 600, fontFamily: "system-ui" }}>POKER</div>
+          <div
+            style={{ fontSize: 28, fontWeight: 600, fontFamily: "system-ui" }}
+          >
+            POKER
+          </div>
         </Neon>
         <Neon color="#aa00ff" glow={15} flicker={0.05}>
-          <div style={{ fontSize: 28, fontWeight: 600, fontFamily: "system-ui" }}>ROULETTE</div>
+          <div
+            style={{ fontSize: 28, fontWeight: 600, fontFamily: "system-ui" }}
+          >
+            ROULETTE
+          </div>
         </Neon>
       </div>
     </AbsoluteFill>
@@ -132,12 +186,26 @@ export const CyberpunkSign: Story = {
       }}
     >
       <Neon color="#ff00ff" glow={30} flicker={0.2} flickerSpeed={2}>
-        <div style={{ fontSize: 72, fontWeight: 900, fontFamily: "system-ui", letterSpacing: 8 }}>
+        <div
+          style={{
+            fontSize: 72,
+            fontWeight: 900,
+            fontFamily: "system-ui",
+            letterSpacing: 8,
+          }}
+        >
           CYBER
         </div>
       </Neon>
       <Neon color="#00ffff" glow={20} flicker={0.1}>
-        <div style={{ fontSize: 18, fontWeight: 500, fontFamily: "system-ui", letterSpacing: 12 }}>
+        <div
+          style={{
+            fontSize: 18,
+            fontWeight: 500,
+            fontFamily: "system-ui",
+            letterSpacing: 12,
+          }}
+        >
           NIGHT CITY
         </div>
       </Neon>

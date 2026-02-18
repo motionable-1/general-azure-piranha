@@ -126,9 +126,7 @@ export const Ticker: React.FC<TickerProps> = ({
   // We modulo by singleCycleLength so the strip loops seamlessly.
   const rawOffset = (frame / fps) * speed;
   const offset =
-    singleCycleLength > 0
-      ? rawOffset % singleCycleLength
-      : rawOffset;
+    singleCycleLength > 0 ? rawOffset % singleCycleLength : rawOffset;
 
   const signedOffset = isReversed ? offset : -offset;
 
@@ -161,9 +159,7 @@ export const Ticker: React.FC<TickerProps> = ({
                 whiteSpace: "nowrap",
                 flexShrink: 0,
                 color: separatorColor ?? color,
-                padding: isHorizontal
-                  ? `0 ${gap}px`
-                  : `${gap}px 0`,
+                padding: isHorizontal ? `0 ${gap}px` : `${gap}px 0`,
               }}
             >
               {separator}

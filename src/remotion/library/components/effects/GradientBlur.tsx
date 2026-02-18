@@ -1,6 +1,12 @@
 import React from "react";
 
-export type BlurDirection = "top" | "bottom" | "left" | "right" | "radial" | "edges";
+export type BlurDirection =
+  | "top"
+  | "bottom"
+  | "left"
+  | "right"
+  | "radial"
+  | "edges";
 
 export interface GradientBlurProps {
   children?: React.ReactNode;

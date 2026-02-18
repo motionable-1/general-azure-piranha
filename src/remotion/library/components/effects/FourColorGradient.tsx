@@ -33,7 +33,7 @@ export interface FourColorGradientProps {
   bottomLeft: string;
   /** Bottom-right color */
   bottomRight: string;
-  /** 
+  /**
    * Custom positions for color points.
    * Each position has x and y values from 0-100 (percentage).
    * Default: corners (0,0), (100,0), (0,100), (100,100)
@@ -64,7 +64,7 @@ export interface FourColorGradientProps {
 
 /**
  * FourColorGradient - A customizable 4-color radial gradient component
- * 
+ *
  * Creates smooth blends between 4 colors positioned at different points,
  * similar to After Effects' 4-color gradient effect.
  *

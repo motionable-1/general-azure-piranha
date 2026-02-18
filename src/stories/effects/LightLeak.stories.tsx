@@ -14,7 +14,10 @@ const meta: Meta<typeof LightLeak> = {
     ),
   ],
   argTypes: {
-    leakStyle: { control: "select", options: ["warm", "cool", "prismatic", "flare", "soft"] },
+    leakStyle: {
+      control: "select",
+      options: ["warm", "cool", "prismatic", "flare", "soft"],
+    },
     speed: { control: { type: "range", min: 0.1, max: 2, step: 0.1 } },
     intensity: { control: { type: "range", min: 0, max: 1, step: 0.05 } },
   },
@@ -27,7 +30,19 @@ export const Warm: Story = {
   args: { leakStyle: "warm", intensity: 0.5, speed: 0.5 },
   render: (args) => (
     <AbsoluteFill style={{ background: "#111" }}>
-      <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 48, fontWeight: 700, fontFamily: "system-ui" }}>
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#fff",
+          fontSize: 48,
+          fontWeight: 700,
+          fontFamily: "system-ui",
+        }}
+      >
         LIGHT LEAK
       </div>
       <LightLeak {...args} />
@@ -46,7 +61,18 @@ export const Prismatic: Story = {
 export const Cool: Story = {
   render: () => (
     <AbsoluteFill style={{ background: "#0f0f1a" }}>
-      <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 36, fontFamily: "system-ui" }}>
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#fff",
+          fontSize: 36,
+          fontFamily: "system-ui",
+        }}
+      >
         Moody
       </div>
       <LightLeak leakStyle="cool" intensity={0.4} speed={0.4} />

@@ -1,5 +1,8 @@
 import React from "react";
-import type { TransitionPresentation, TransitionPresentationComponentProps } from "@remotion/transitions";
+import type {
+  TransitionPresentation,
+  TransitionPresentationComponentProps,
+} from "@remotion/transitions";
 
 export type FlipDirection = "horizontal" | "vertical";
 
@@ -8,7 +11,9 @@ export interface FlipProps extends Record<string, unknown> {
   perspective: number;
 }
 
-const FlipComponent: React.FC<TransitionPresentationComponentProps<FlipProps>> = ({
+const FlipComponent: React.FC<
+  TransitionPresentationComponentProps<FlipProps>
+> = ({
   children,
   presentationDirection,
   presentationProgress,
@@ -29,44 +34,50 @@ const FlipComponent: React.FC<TransitionPresentationComponentProps<FlipProps>> =
   };
 
   const innerStyle: React.CSSProperties = {
-      width: "100%",
-      height: "100%",
-      backfaceVisibility: "hidden",
-  }
+    width: "100%",
+    height: "100%",
+    backfaceVisibility: "hidden",
+  };
 
   if (finished) {
-      const rotation = -180 * t;
+    const rotation = -180 * t;
 
-      return (
-          <div style={style}>
-              <div style={{
-                  ...innerStyle,
-                  transform: `rotate${rotationAxis}(${rotation}deg)`,
-                  zIndex: t < 0.5 ? 2 : 0,
-                  opacity: t < 0.5 ? 1 : 0
-              }}>
-                  {children}
-              </div>
-          </div>
-      );
+    return (
+      <div style={style}>
+        <div
+          style={{
+            ...innerStyle,
+            transform: `rotate${rotationAxis}(${rotation}deg)`,
+            zIndex: t < 0.5 ? 2 : 0,
+            opacity: t < 0.5 ? 1 : 0,
+          }}
+        >
+          {children}
+        </div>
+      </div>
+    );
   } else {
-       const rotation = 180 * (1 - t);
-       return (
-          <div style={style}>
-              <div style={{
-                  ...innerStyle,
-                  transform: `rotate${rotationAxis}(${rotation}deg)`,
-                  zIndex: t >= 0.5 ? 2 : 0,
-                  opacity: t >= 0.5 ? 1 : 0
-              }}>
-                  {children}
-              </div>
-          </div>
-      );
+    const rotation = 180 * (1 - t);
+    return (
+      <div style={style}>
+        <div
+          style={{
+            ...innerStyle,
+            transform: `rotate${rotationAxis}(${rotation}deg)`,
+            zIndex: t >= 0.5 ? 2 : 0,
+            opacity: t >= 0.5 ? 1 : 0,
+          }}
+        >
+          {children}
+        </div>
+      </div>
+    );
   }
 };
 
-export const flip = (props?: Partial<FlipProps>): TransitionPresentation<FlipProps> => {
+export const flip = (
+  props?: Partial<FlipProps>,
+): TransitionPresentation<FlipProps> => {
   const direction = props?.direction ?? "horizontal";
   const perspective = props?.perspective ?? 1000;
 

@@ -1,5 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { AbsoluteFill, useCurrentFrame, useVideoConfig, interpolate, Easing } from "remotion";
+import {
+  AbsoluteFill,
+  useCurrentFrame,
+  useVideoConfig,
+  interpolate,
+  Easing,
+} from "remotion";
 import { MaskedReveal } from "../../remotion/library/components/layout";
 import { RemotionWrapper } from "../helpers/RemotionWrapper";
 
@@ -27,9 +33,13 @@ const RevealContent = () => (
       justifyContent: "center",
     }}
   >
-    <div style={{ color: "#fff", fontFamily: "system-ui", textAlign: "center" }}>
+    <div
+      style={{ color: "#fff", fontFamily: "system-ui", textAlign: "center" }}
+    >
       <div style={{ fontSize: 48, fontWeight: 800 }}>REVEALED</div>
-      <div style={{ fontSize: 16, opacity: 0.7, letterSpacing: 4 }}>MASKED CONTENT</div>
+      <div style={{ fontSize: 16, opacity: 0.7, letterSpacing: 4 }}>
+        MASKED CONTENT
+      </div>
     </div>
   </AbsoluteFill>
 );
@@ -100,7 +110,13 @@ const AnimatedSoftCircle = () => {
   });
 
   return (
-    <MaskedReveal progress={progress} type="circle" softness={20} centerX={0.3} centerY={0.4}>
+    <MaskedReveal
+      progress={progress}
+      type="circle"
+      softness={20}
+      centerX={0.3}
+      centerY={0.4}
+    >
       <RevealContent />
     </MaskedReveal>
   );

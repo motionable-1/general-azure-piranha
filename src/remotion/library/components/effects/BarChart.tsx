@@ -120,11 +120,16 @@ export const BarChart: React.FC<BarChartProps> = ({
           const delayFrames = Math.round((delay + i * stagger) * fps);
           const durationFrames = Math.max(1, Math.round(duration * fps));
 
-          const progress = interpolate(frame - delayFrames, [0, durationFrames], [0, 1], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-            easing: Easing.out(Easing.cubic),
-          });
+          const progress = interpolate(
+            frame - delayFrames,
+            [0, durationFrames],
+            [0, 1],
+            {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+              easing: Easing.out(Easing.cubic),
+            },
+          );
 
           const ratio = (bar.value / max) * progress;
           const barColor = bar.color ?? color;

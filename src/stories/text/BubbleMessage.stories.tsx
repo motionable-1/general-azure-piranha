@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { AbsoluteFill } from "remotion";
-import { BubbleMessage, ChatConversation } from "../../remotion/library/components/text/BubbleMessage";
+import {
+  BubbleMessage,
+  ChatConversation,
+} from "../../remotion/library/components/text/BubbleMessage";
 import { RemotionWrapper } from "../helpers/RemotionWrapper";
 
 const meta: Meta<typeof BubbleMessage> = {
@@ -15,7 +18,10 @@ const meta: Meta<typeof BubbleMessage> = {
   ],
   argTypes: {
     type: { control: { type: "radio" }, options: ["sent", "received"] },
-    platform: { control: { type: "select" }, options: ["ios", "android", "whatsapp", "generic"] },
+    platform: {
+      control: { type: "select" },
+      options: ["ios", "android", "whatsapp", "generic"],
+    },
     tail: { control: "boolean" },
     typing: { control: "boolean" },
     delay: { control: { type: "range", min: 0, max: 2, step: 0.1 } },
@@ -31,7 +37,14 @@ export const Default: Story = {
     platform: "ios",
   },
   render: (args) => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: 40 }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 40,
+      }}
+    >
       <div style={{ width: 400 }}>
         <BubbleMessage {...args}>Hey, how are you?</BubbleMessage>
       </div>
@@ -41,15 +54,44 @@ export const Default: Story = {
 
 export const IOSConversation: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: 40 }}>
-      <div style={{ width: 400, backgroundColor: "#fff", borderRadius: 20, padding: 20 }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 40,
+      }}
+    >
+      <div
+        style={{
+          width: 400,
+          backgroundColor: "#fff",
+          borderRadius: 20,
+          padding: 20,
+        }}
+      >
         <ChatConversation
           platform="ios"
           messages={[
-            { id: 1, text: "Hey! Are you coming tonight?", type: "received", delay: 0.5 },
+            {
+              id: 1,
+              text: "Hey! Are you coming tonight?",
+              type: "received",
+              delay: 0.5,
+            },
             { id: 2, text: "Yes! What time?", type: "sent", delay: 0.8 },
-            { id: 3, text: "8pm at the usual place", type: "received", delay: 0.6 },
-            { id: 4, text: "Perfect, see you there!", type: "sent", delay: 0.5 },
+            {
+              id: 3,
+              text: "8pm at the usual place",
+              type: "received",
+              delay: 0.6,
+            },
+            {
+              id: 4,
+              text: "Perfect, see you there!",
+              type: "sent",
+              delay: 0.5,
+            },
           ]}
         />
       </div>
@@ -66,14 +108,36 @@ export const WhatsAppStyle: Story = {
     ),
   ],
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: 40 }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 40,
+      }}
+    >
       <div style={{ width: 400 }}>
         <ChatConversation
           platform="whatsapp"
           messages={[
-            { id: 1, text: "Check out this new feature!", type: "received", delay: 0.6 },
-            { id: 2, text: "Wow, that looks amazing!", type: "sent", delay: 0.7 },
-            { id: 3, text: "Right? Shipped it today", type: "received", delay: 0.5 },
+            {
+              id: 1,
+              text: "Check out this new feature!",
+              type: "received",
+              delay: 0.6,
+            },
+            {
+              id: 2,
+              text: "Wow, that looks amazing!",
+              type: "sent",
+              delay: 0.7,
+            },
+            {
+              id: 3,
+              text: "Right? Shipped it today",
+              type: "received",
+              delay: 0.5,
+            },
           ]}
         />
       </div>
@@ -83,8 +147,17 @@ export const WhatsAppStyle: Story = {
 
 export const TypingIndicator: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: 40 }}>
-      <div style={{ width: 400, display: "flex", flexDirection: "column", gap: 8 }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 40,
+      }}
+    >
+      <div
+        style={{ width: 400, display: "flex", flexDirection: "column", gap: 8 }}
+      >
         <BubbleMessage type="sent" platform="ios">
           Hello?
         </BubbleMessage>
@@ -96,9 +169,23 @@ export const TypingIndicator: Story = {
 
 export const WithTimestamps: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: 40 }}>
-      <div style={{ width: 400, display: "flex", flexDirection: "column", gap: 8 }}>
-        <BubbleMessage type="received" platform="ios" time="9:41 AM" sender="Alex">
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 40,
+      }}
+    >
+      <div
+        style={{ width: 400, display: "flex", flexDirection: "column", gap: 8 }}
+      >
+        <BubbleMessage
+          type="received"
+          platform="ios"
+          time="9:41 AM"
+          sender="Alex"
+        >
           Meeting at 3?
         </BubbleMessage>
         <BubbleMessage type="sent" platform="ios" time="9:42 AM" delay={0.6}>

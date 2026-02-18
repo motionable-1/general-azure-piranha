@@ -154,7 +154,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
             : undefined,
         }}
       />
-      
+
       {/* Phone frame - Inner Band (Antenna line area) */}
       <div
         style={{
@@ -212,14 +212,16 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
             }}
           >
             {/* Camera lens reflection */}
-             <div style={{
-                 width: `${dimensions.notchHeight * 0.4 * scale}px`,
-                 height: `${dimensions.notchHeight * 0.4 * scale}px`,
-                 borderRadius: "50%",
-                 background: "rgba(255,255,255,0.05)",
-                 boxShadow: "inset 0 0 2px rgba(255,255,255,0.1)",
-                 marginLeft: "auto"
-             }} />
+            <div
+              style={{
+                width: `${dimensions.notchHeight * 0.4 * scale}px`,
+                height: `${dimensions.notchHeight * 0.4 * scale}px`,
+                borderRadius: "50%",
+                background: "rgba(255,255,255,0.05)",
+                boxShadow: "inset 0 0 2px rgba(255,255,255,0.1)",
+                marginLeft: "auto",
+              }}
+            />
           </div>
         )}
       </div>

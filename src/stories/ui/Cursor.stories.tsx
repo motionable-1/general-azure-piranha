@@ -37,10 +37,44 @@ export const WithClicks: Story = {
   render: () => (
     <AbsoluteFill>
       {/* Clickable targets */}
-      <div style={{ position: "absolute", left: 400, top: 250, width: 120, height: 44, background: "#3b82f6", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontFamily: "system-ui", fontWeight: 600, fontSize: 14 }}>
+      <div
+        style={{
+          position: "absolute",
+          left: 400,
+          top: 250,
+          width: 120,
+          height: 44,
+          background: "#3b82f6",
+          borderRadius: 8,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#fff",
+          fontFamily: "system-ui",
+          fontWeight: 600,
+          fontSize: 14,
+        }}
+      >
         Sign Up
       </div>
-      <div style={{ position: "absolute", left: 700, top: 350, width: 120, height: 44, background: "#22c55e", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontFamily: "system-ui", fontWeight: 600, fontSize: 14 }}>
+      <div
+        style={{
+          position: "absolute",
+          left: 700,
+          top: 350,
+          width: 120,
+          height: 44,
+          background: "#22c55e",
+          borderRadius: 8,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#fff",
+          fontFamily: "system-ui",
+          fontWeight: 600,
+          fontSize: 14,
+        }}
+      >
         Confirm
       </div>
       <Cursor
@@ -61,11 +95,66 @@ export const CursorStyles: Story = {
   render: () => (
     <AbsoluteFill>
       {/* Labels */}
-      <div style={{ position: "absolute", left: 180, top: 280, fontSize: 12, color: "#666", fontFamily: "system-ui" }}>default</div>
-      <div style={{ position: "absolute", left: 380, top: 180, fontSize: 12, color: "#666", fontFamily: "system-ui" }}>pointer</div>
-      <div style={{ position: "absolute", left: 580, top: 280, fontSize: 12, color: "#666", fontFamily: "system-ui" }}>text</div>
-      <div style={{ position: "absolute", left: 780, top: 180, fontSize: 12, color: "#666", fontFamily: "system-ui" }}>crosshair</div>
-      <div style={{ position: "absolute", left: 980, top: 280, fontSize: 12, color: "#666", fontFamily: "system-ui" }}>grab</div>
+      <div
+        style={{
+          position: "absolute",
+          left: 180,
+          top: 280,
+          fontSize: 12,
+          color: "#666",
+          fontFamily: "system-ui",
+        }}
+      >
+        default
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          left: 380,
+          top: 180,
+          fontSize: 12,
+          color: "#666",
+          fontFamily: "system-ui",
+        }}
+      >
+        pointer
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          left: 580,
+          top: 280,
+          fontSize: 12,
+          color: "#666",
+          fontFamily: "system-ui",
+        }}
+      >
+        text
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          left: 780,
+          top: 180,
+          fontSize: 12,
+          color: "#666",
+          fontFamily: "system-ui",
+        }}
+      >
+        crosshair
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          left: 980,
+          top: 280,
+          fontSize: 12,
+          color: "#666",
+          fontFamily: "system-ui",
+        }}
+      >
+        grab
+      </div>
       <Cursor
         path={[
           { x: 200, y: 300, frame: 0, cursor: "default" },
@@ -90,7 +179,24 @@ export const DarkMode: Story = {
   ],
   render: () => (
     <AbsoluteFill>
-      <div style={{ position: "absolute", left: 400, top: 280, width: 140, height: 44, background: "#6366f1", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontFamily: "system-ui", fontWeight: 600, fontSize: 14 }}>
+      <div
+        style={{
+          position: "absolute",
+          left: 400,
+          top: 280,
+          width: 140,
+          height: 44,
+          background: "#6366f1",
+          borderRadius: 8,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#fff",
+          fontFamily: "system-ui",
+          fontWeight: 600,
+          fontSize: 14,
+        }}
+      >
         Get Started
       </div>
       <Cursor

@@ -14,7 +14,10 @@ const meta: Meta<typeof Smoke> = {
     ),
   ],
   argTypes: {
-    smokeStyle: { control: "select", options: ["fog", "haze", "wisps", "thick"] },
+    smokeStyle: {
+      control: "select",
+      options: ["fog", "haze", "wisps", "thick"],
+    },
     intensity: { control: { type: "range", min: 0, max: 1, step: 0.05 } },
     speed: { control: { type: "range", min: 0.1, max: 2, step: 0.1 } },
     color: { control: "color" },
@@ -28,7 +31,19 @@ export const Fog: Story = {
   args: { smokeStyle: "fog", intensity: 0.3, speed: 0.5, color: "#ffffff" },
   render: (args) => (
     <AbsoluteFill>
-      <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 48, fontWeight: 700, fontFamily: "system-ui" }}>
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#fff",
+          fontSize: 48,
+          fontWeight: 700,
+          fontFamily: "system-ui",
+        }}
+      >
         ATMOSPHERIC
       </div>
       <Smoke {...args} />
@@ -40,8 +55,25 @@ export const ColoredHaze: Story = {
   render: () => (
     <AbsoluteFill style={{ background: "#0a0a1a" }}>
       <Smoke smokeStyle="haze" color="#A78BFA" intensity={0.25} speed={0.3} />
-      <Smoke smokeStyle="wisps" color="#F472B6" intensity={0.2} speed={0.4} seed="smoke2" />
-      <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 36, fontFamily: "system-ui" }}>
+      <Smoke
+        smokeStyle="wisps"
+        color="#F472B6"
+        intensity={0.2}
+        speed={0.4}
+        seed="smoke2"
+      />
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#fff",
+          fontSize: 36,
+          fontFamily: "system-ui",
+        }}
+      >
         Layered Mood
       </div>
     </AbsoluteFill>

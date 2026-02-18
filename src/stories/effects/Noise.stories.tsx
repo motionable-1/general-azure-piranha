@@ -94,7 +94,13 @@ export const SubtleTexture: Story = {
           background: "linear-gradient(180deg, #ffecd2, #fcb69f)",
         }}
       />
-      <Noise type="subtle" intensity={0.3} speed={0} blend="multiply" opacity={0.5} />
+      <Noise
+        type="subtle"
+        intensity={0.3}
+        speed={0}
+        blend="multiply"
+        opacity={0.5}
+      />
     </AbsoluteFill>
   ),
 };

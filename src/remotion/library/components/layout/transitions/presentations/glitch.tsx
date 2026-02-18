@@ -24,14 +24,14 @@ const GlitchComponent: React.FC<PresentationComponentProps> = ({
 
   const slices = useMemo(() => {
     return new Array(numSlices).fill(0).map((_, i) => {
-        const displacementX = (random(seed + i) - 0.5) * 100 * intensity;
-        const displacementY = (random(seed + i + 0.1) - 0.5) * 10 * intensity;
-        return {
-            top: i * sliceHeight,
-            bottom: 100 - (i + 1) * sliceHeight,
-            displacementX,
-            displacementY,
-        };
+      const displacementX = (random(seed + i) - 0.5) * 100 * intensity;
+      const displacementY = (random(seed + i + 0.1) - 0.5) * 10 * intensity;
+      return {
+        top: i * sliceHeight,
+        bottom: 100 - (i + 1) * sliceHeight,
+        displacementX,
+        displacementY,
+      };
     });
   }, [intensity, numSlices, seed, sliceHeight]);
 
@@ -44,32 +44,32 @@ const GlitchComponent: React.FC<PresentationComponentProps> = ({
 
   return (
     <AbsoluteFill style={{ opacity }}>
-        {slices.map((slice, i) => (
-            <AbsoluteFill
-                key={i}
-                style={{
-                    clipPath: `inset(${slice.top}% 0 ${slice.bottom}% 0)`,
-                    transform: `translate(${slice.displacementX}px, ${slice.displacementY}px) skewX(${globalSkew}deg)`,
-                    filter: `hue-rotate(${hueRotate}deg) contrast(${1 + intensity})`,
-                    zIndex: i,
-                }}
-            >
-                {children}
-            </AbsoluteFill>
-        ))}
-        {intensity > 0.5 && (
-            <AbsoluteFill
-                style={{
-                    opacity: 0.3,
-                    transform: `scale(1.05) translate(${(random(seed)-0.5)*20}px, ${(random(seed+1)-0.5)*20}px)`,
-                    mixBlendMode: 'difference',
-                    filter: 'invert(1)',
-                    zIndex: numSlices + 1
-                }}
-            >
-                {children}
-            </AbsoluteFill>
-        )}
+      {slices.map((slice, i) => (
+        <AbsoluteFill
+          key={i}
+          style={{
+            clipPath: `inset(${slice.top}% 0 ${slice.bottom}% 0)`,
+            transform: `translate(${slice.displacementX}px, ${slice.displacementY}px) skewX(${globalSkew}deg)`,
+            filter: `hue-rotate(${hueRotate}deg) contrast(${1 + intensity})`,
+            zIndex: i,
+          }}
+        >
+          {children}
+        </AbsoluteFill>
+      ))}
+      {intensity > 0.5 && (
+        <AbsoluteFill
+          style={{
+            opacity: 0.3,
+            transform: `scale(1.05) translate(${(random(seed) - 0.5) * 20}px, ${(random(seed + 1) - 0.5) * 20}px)`,
+            mixBlendMode: "difference",
+            filter: "invert(1)",
+            zIndex: numSlices + 1,
+          }}
+        >
+          {children}
+        </AbsoluteFill>
+      )}
     </AbsoluteFill>
   );
 };

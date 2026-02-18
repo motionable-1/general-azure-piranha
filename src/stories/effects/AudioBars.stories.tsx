@@ -27,7 +27,13 @@ type Story = StoryObj<typeof AudioBars>;
 export const Default: Story = {
   args: { count: 32, color: "#4ECDC4", colorEnd: "#44B09E", speed: 1.5 },
   render: (args) => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <AudioBars {...args} />
     </AbsoluteFill>
   ),
@@ -35,16 +41,45 @@ export const Default: Story = {
 
 export const Mirror: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-      <AudioBars count={40} layout="mirror" color="#FF6B6B" colorEnd="#FFE66D" height={300} width={600} speed={2} />
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <AudioBars
+        count={40}
+        layout="mirror"
+        color="#FF6B6B"
+        colorEnd="#FFE66D"
+        height={300}
+        width={600}
+        speed={2}
+      />
     </AbsoluteFill>
   ),
 };
 
 export const Minimal: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "flex-end", justifyContent: "center", paddingBottom: 60 }}>
-      <AudioBars count={16} color="#ffffff" height={80} width={200} gap={4} speed={1} smoothing={0.8} />
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "flex-end",
+        justifyContent: "center",
+        paddingBottom: 60,
+      }}
+    >
+      <AudioBars
+        count={16}
+        color="#ffffff"
+        height={80}
+        width={200}
+        gap={4}
+        speed={1}
+        smoothing={0.8}
+      />
     </AbsoluteFill>
   ),
 };

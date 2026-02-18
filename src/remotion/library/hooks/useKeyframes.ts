@@ -20,10 +20,10 @@ export interface Keyframe {
 export const interpolateKeyframes = (
   frame: number,
   keyframes: Keyframe[],
-  defaultValue: number = 0
+  defaultValue: number = 0,
 ): number => {
   if (!keyframes || keyframes.length === 0) return defaultValue;
-  
+
   // Sort keyframes by frame to ensure correct order
   const sorted = [...keyframes].sort((a, b) => a.frame - b.frame);
 
@@ -61,7 +61,7 @@ export const interpolateKeyframes = (
       easing,
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
-    }
+    },
   );
 };
 
@@ -81,7 +81,7 @@ export const interpolateKeyframes = (
  */
 export const useKeyframes = (
   keyframes: Keyframe[],
-  defaultValue: number = 0
+  defaultValue: number = 0,
 ) => {
   const frame = useCurrentFrame();
   return interpolateKeyframes(frame, keyframes, defaultValue);

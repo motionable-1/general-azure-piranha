@@ -33,7 +33,11 @@ export const Default: Story = {
     y: 0.3,
   },
   render: (args) => (
-    <AbsoluteFill style={{ background: "linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%)" }}>
+    <AbsoluteFill
+      style={{
+        background: "linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%)",
+      }}
+    >
       <LensFlare {...args} />
     </AbsoluteFill>
   ),
@@ -41,7 +45,11 @@ export const Default: Story = {
 
 export const AnimatedFlare: Story = {
   render: () => (
-    <AbsoluteFill style={{ background: "linear-gradient(180deg, #0a0a2e 0%, #000000 100%)" }}>
+    <AbsoluteFill
+      style={{
+        background: "linear-gradient(180deg, #0a0a2e 0%, #000000 100%)",
+      }}
+    >
       <LensFlare animate speed={0.5} scale={1.2} />
     </AbsoluteFill>
   ),
@@ -74,10 +82,18 @@ export const CinematicScene: Story = {
         style={{
           width: "100%",
           height: "100%",
-          background: "linear-gradient(180deg, #1a0a2e 0%, #0a0a15 60%, #000 100%)",
+          background:
+            "linear-gradient(180deg, #1a0a2e 0%, #0a0a15 60%, #000 100%)",
         }}
       />
-      <LensFlare x={0.7} y={0.2} scale={0.8} opacity={0.9} animate speed={0.3} />
+      <LensFlare
+        x={0.7}
+        y={0.2}
+        scale={0.8}
+        opacity={0.9}
+        animate
+        speed={0.3}
+      />
       <div
         style={{
           position: "absolute",
@@ -87,8 +103,12 @@ export const CinematicScene: Story = {
           fontFamily: "system-ui",
         }}
       >
-        <div style={{ fontSize: 48, fontWeight: 800, letterSpacing: -1 }}>CINEMATIC</div>
-        <div style={{ fontSize: 14, opacity: 0.5, letterSpacing: 4 }}>LENS FLARE EFFECT</div>
+        <div style={{ fontSize: 48, fontWeight: 800, letterSpacing: -1 }}>
+          CINEMATIC
+        </div>
+        <div style={{ fontSize: 14, opacity: 0.5, letterSpacing: 4 }}>
+          LENS FLARE EFFECT
+        </div>
       </div>
     </AbsoluteFill>
   ),

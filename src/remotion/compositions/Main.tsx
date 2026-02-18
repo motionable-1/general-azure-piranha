@@ -1,56 +1,75 @@
-import { AbsoluteFill, Artifact, useCurrentFrame, useVideoConfig } from "remotion";
-import { loadFont } from "@remotion/google-fonts/SpaceMono";
+import React from "react";
+import { Artifact, useCurrentFrame } from "remotion";
+import { TransitionSeries, linearTiming } from "@remotion/transitions";
+import { glitch } from "../library/components/layout/transitions/presentations/glitch";
+import { flashWhite } from "../library/components/layout/transitions/presentations/flashWhite";
+import { flashBlack } from "../library/components/layout/transitions/presentations/flashBlack";
+import { IntroScene } from "./scenes/IntroScene";
+import { GlitchScene } from "./scenes/GlitchScene";
+import { SpeedScene } from "./scenes/SpeedScene";
+import { OutroScene } from "./scenes/OutroScene";
 
-const LoaderDots = () => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-
-  const dot = (index: number) => {
-    const phase = (frame / fps) * 2 * Math.PI + index * 0.8;
-    return 0.35 + Math.max(0, Math.sin(phase)) * 0.65;
-  };
-
-  return (
-    <span className="inline-flex gap-1">
-      {[0, 1, 2].map((i) => (
-        <span
-          key={i}
-          className="inline-block text-sky-300"
-          style={{ opacity: dot(i) }}
-        >
-          .
-        </span>
-      ))}
-    </span>
-  );
-};
+/**
+ * Duration calculation:
+ * Scene 1 (Intro): 120 frames (4s)
+ * Transition 1 (glitch): 15 frames
+ * Scene 2 (Glitch): 150 frames (5s)
+ * Transition 2 (flashWhite): 12 frames
+ * Scene 3 (Speed): 150 frames (5s)
+ * Transition 3 (flashBlack): 12 frames
+ * Scene 4 (Outro): 150 frames (5s)
+ *
+ * Total = 120 + 150 + 150 + 150 - 15 - 12 - 12 = 531 frames
+ * + 30 frames buffer at end = 561 frames (~18.7s)
+ */
 
 export const Main: React.FC = () => {
-  const { fontFamily } = loadFont();
   const frame = useCurrentFrame();
+
   return (
     <>
-      {/* Leave this here to generate a thumbnail */}
       {frame === 0 && (
         <Artifact content={Artifact.Thumbnail} filename="thumbnail.jpeg" />
       )}
-      <AbsoluteFill className="flex items-center justify-center bg-[#0f1115]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.28),transparent_45%),radial-gradient(circle_at_70%_60%,rgba(16,185,129,0.2),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(180deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:48px_48px] opacity-40" />
-        <div
-          className="flex flex-col items-center gap-4 text-center text-white drop-shadow-[0_12px_32px_rgba(0,0,0,0.55)]"
-          style={{ fontFamily, fontWeight: 700, letterSpacing: "0.01em" }}
-        >
-          <div className="text-4xl md:text-5xl font-bold">
-            <span className="font-extrabold text-sky-300">TypeFrames</span> is
-            building your video
-            <LoaderDots />
-          </div>
-          <div className="text-base md:text-lg text-white/70">
-            Rendering scenes, timing transitions, and polishing frames.
-          </div>
-        </div>
-      </AbsoluteFill>
+      <TransitionSeries>
+        {/* Scene 1: Cinematic Intro with title reveal */}
+        <TransitionSeries.Sequence durationInFrames={120}>
+          <IntroScene />
+        </TransitionSeries.Sequence>
+
+        {/* Glitch transition into Scene 2 */}
+        <TransitionSeries.Transition
+          presentation={glitch()}
+          timing={linearTiming({ durationInFrames: 15 })}
+        />
+
+        {/* Scene 2: Glitch Freeze with RGB split */}
+        <TransitionSeries.Sequence durationInFrames={150}>
+          <GlitchScene />
+        </TransitionSeries.Sequence>
+
+        {/* Flash white transition into Scene 3 */}
+        <TransitionSeries.Transition
+          presentation={flashWhite()}
+          timing={linearTiming({ durationInFrames: 12 })}
+        />
+
+        {/* Scene 3: Speed Ramp with warm tones */}
+        <TransitionSeries.Sequence durationInFrames={150}>
+          <SpeedScene />
+        </TransitionSeries.Sequence>
+
+        {/* Flash black transition into Scene 4 */}
+        <TransitionSeries.Transition
+          presentation={flashBlack()}
+          timing={linearTiming({ durationInFrames: 12 })}
+        />
+
+        {/* Scene 4: Outro with CRT shutdown */}
+        <TransitionSeries.Sequence durationInFrames={180}>
+          <OutroScene />
+        </TransitionSeries.Sequence>
+      </TransitionSeries>
     </>
   );
 };

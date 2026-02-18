@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { CircleLayout, ArcLayout } from "../../remotion/library/components/layout";
+import {
+  CircleLayout,
+  ArcLayout,
+} from "../../remotion/library/components/layout";
 import { RemotionWrapper } from "../helpers/RemotionWrapper";
 
 const meta: Meta<typeof CircleLayout> = {

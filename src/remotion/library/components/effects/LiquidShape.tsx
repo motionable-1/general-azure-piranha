@@ -161,7 +161,9 @@ export const LiquidShape: React.FC<LiquidShapeProps> = ({
           fill={colorEnd ? `url(#${gradientId})` : color}
           style={
             shadow > 0
-              ? { filter: `drop-shadow(0 ${shadow / 2}px ${shadow}px rgba(0,0,0,0.25))` }
+              ? {
+                  filter: `drop-shadow(0 ${shadow / 2}px ${shadow}px rgba(0,0,0,0.25))`,
+                }
               : undefined
           }
         />

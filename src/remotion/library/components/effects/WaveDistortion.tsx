@@ -48,13 +48,33 @@ function getConfig(waveType: WaveType, frequency: number): TurbulenceConfig {
 
   switch (waveType) {
     case "horizontal":
-      return { baseFrequencyX: base * 0.1, baseFrequencyY: base, numOctaves: 1, turbulenceType: "turbulence" };
+      return {
+        baseFrequencyX: base * 0.1,
+        baseFrequencyY: base,
+        numOctaves: 1,
+        turbulenceType: "turbulence",
+      };
     case "vertical":
-      return { baseFrequencyX: base, baseFrequencyY: base * 0.1, numOctaves: 1, turbulenceType: "turbulence" };
+      return {
+        baseFrequencyX: base,
+        baseFrequencyY: base * 0.1,
+        numOctaves: 1,
+        turbulenceType: "turbulence",
+      };
     case "circular":
-      return { baseFrequencyX: base, baseFrequencyY: base, numOctaves: 2, turbulenceType: "turbulence" };
+      return {
+        baseFrequencyX: base,
+        baseFrequencyY: base,
+        numOctaves: 2,
+        turbulenceType: "turbulence",
+      };
     case "turbulent":
-      return { baseFrequencyX: base * 0.5, baseFrequencyY: base * 0.5, numOctaves: 5, turbulenceType: "fractalNoise" };
+      return {
+        baseFrequencyX: base * 0.5,
+        baseFrequencyY: base * 0.5,
+        numOctaves: 5,
+        turbulenceType: "fractalNoise",
+      };
   }
 }
 
@@ -97,7 +117,10 @@ export const WaveDistortion: React.FC<WaveDistortionProps> = ({
   const instanceId = useId();
   const filterId = `${instanceId}-wave`;
 
-  const config = useMemo(() => getConfig(waveType, frequency), [waveType, frequency]);
+  const config = useMemo(
+    () => getConfig(waveType, frequency),
+    [waveType, frequency],
+  );
 
   // Deterministic seed for animation — Math.floor keeps it integer-stepped
   const seed = animated ? Math.floor(frame * speed * 0.5) : 0;

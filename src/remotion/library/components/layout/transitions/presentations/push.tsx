@@ -1,11 +1,16 @@
 import { AbsoluteFill } from "remotion";
-import type { TransitionPresentation, TransitionPresentationComponentProps } from "@remotion/transitions";
+import type {
+  TransitionPresentation,
+  TransitionPresentationComponentProps,
+} from "@remotion/transitions";
 
 interface PushProps extends Record<string, unknown> {
   direction: "left" | "right";
 }
 
-const PushComponent: React.FC<TransitionPresentationComponentProps<PushProps>> = ({
+const PushComponent: React.FC<
+  TransitionPresentationComponentProps<PushProps>
+> = ({
   children,
   presentationDirection,
   presentationProgress,
@@ -25,7 +30,7 @@ const PushComponent: React.FC<TransitionPresentationComponentProps<PushProps>> =
           transform: `translateX(${translateX}%) scale(${0.95 + smoothProgress * 0.05})`,
           filter: `brightness(${0.7 + smoothProgress * 0.3})`,
           zIndex: 1,
-          boxShadow: '0 0 20px rgba(0,0,0,0.5)',
+          boxShadow: "0 0 20px rgba(0,0,0,0.5)",
         }}
       >
         {children}
@@ -47,7 +52,7 @@ const PushComponent: React.FC<TransitionPresentationComponentProps<PushProps>> =
 };
 
 export function push(
-  direction: "left" | "right"
+  direction: "left" | "right",
 ): TransitionPresentation<PushProps> {
   return {
     component: PushComponent,

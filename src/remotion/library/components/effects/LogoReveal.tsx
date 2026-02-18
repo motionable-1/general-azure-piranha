@@ -1,7 +1,13 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, interpolate, Easing } from "remotion";
 
-export type LogoRevealStyle = "scale" | "blur" | "glow" | "wipe" | "bounce" | "elastic";
+export type LogoRevealStyle =
+  | "scale"
+  | "blur"
+  | "glow"
+  | "wipe"
+  | "bounce"
+  | "elastic";
 
 export interface LogoRevealProps {
   children: React.ReactNode;
@@ -83,10 +89,15 @@ export const LogoReveal: React.FC<LogoRevealProps> = ({
       }
 
       case "glow": {
-        const glowBlur = interpolate(f, [0, durationFrames * 0.5, durationFrames], [0, 40 * glowIntensity, 0], {
-          extrapolateLeft: "clamp",
-          extrapolateRight: "clamp",
-        });
+        const glowBlur = interpolate(
+          f,
+          [0, durationFrames * 0.5, durationFrames],
+          [0, 40 * glowIntensity, 0],
+          {
+            extrapolateLeft: "clamp",
+            extrapolateRight: "clamp",
+          },
+        );
         const scale = interpolate(f, [0, durationFrames], [0.9, 1], {
           extrapolateLeft: "clamp",
           extrapolateRight: "clamp",
@@ -107,7 +118,13 @@ export const LogoReveal: React.FC<LogoRevealProps> = ({
       case "bounce": {
         const scale = interpolate(
           f,
-          [0, durationFrames * 0.4, durationFrames * 0.6, durationFrames * 0.8, durationFrames],
+          [
+            0,
+            durationFrames * 0.4,
+            durationFrames * 0.6,
+            durationFrames * 0.8,
+            durationFrames,
+          ],
           [0, 1.2, 0.9, 1.05, 1],
           { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
         );
@@ -120,7 +137,14 @@ export const LogoReveal: React.FC<LogoRevealProps> = ({
       case "elastic": {
         const scale = interpolate(
           f,
-          [0, durationFrames * 0.3, durationFrames * 0.5, durationFrames * 0.7, durationFrames * 0.85, durationFrames],
+          [
+            0,
+            durationFrames * 0.3,
+            durationFrames * 0.5,
+            durationFrames * 0.7,
+            durationFrames * 0.85,
+            durationFrames,
+          ],
           [0, 1.3, 0.85, 1.1, 0.95, 1],
           { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
         );

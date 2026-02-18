@@ -75,10 +75,30 @@ function renderMinimal(
     >
   >,
 ): React.ReactNode {
-  const titleOpacity = clampedInterpolate(progress, [0, 0.6], [0, 1], Easing.out(Easing.cubic));
-  const titleY = clampedInterpolate(progress, [0, 0.6], [20, 0], Easing.out(Easing.cubic));
-  const subOpacity = clampedInterpolate(subtitleProgress, [0, 1], [0, 1], Easing.out(Easing.quad));
-  const subY = clampedInterpolate(subtitleProgress, [0, 1], [10, 0], Easing.out(Easing.quad));
+  const titleOpacity = clampedInterpolate(
+    progress,
+    [0, 0.6],
+    [0, 1],
+    Easing.out(Easing.cubic),
+  );
+  const titleY = clampedInterpolate(
+    progress,
+    [0, 0.6],
+    [20, 0],
+    Easing.out(Easing.cubic),
+  );
+  const subOpacity = clampedInterpolate(
+    subtitleProgress,
+    [0, 1],
+    [0, 1],
+    Easing.out(Easing.quad),
+  );
+  const subY = clampedInterpolate(
+    subtitleProgress,
+    [0, 1],
+    [10, 0],
+    Easing.out(Easing.quad),
+  );
 
   return (
     <>
@@ -133,10 +153,30 @@ function renderBold(
     >
   >,
 ): React.ReactNode {
-  const scale = clampedInterpolate(progress, [0, 0.7], [1.2, 1], Easing.out(Easing.cubic));
-  const clipInset = clampedInterpolate(progress, [0, 0.7], [50, 0], Easing.out(Easing.cubic));
-  const subSlide = clampedInterpolate(subtitleProgress, [0, 1], [40, 0], Easing.out(Easing.cubic));
-  const subOpacity = clampedInterpolate(subtitleProgress, [0, 1], [0, 1], Easing.out(Easing.quad));
+  const scale = clampedInterpolate(
+    progress,
+    [0, 0.7],
+    [1.2, 1],
+    Easing.out(Easing.cubic),
+  );
+  const clipInset = clampedInterpolate(
+    progress,
+    [0, 0.7],
+    [50, 0],
+    Easing.out(Easing.cubic),
+  );
+  const subSlide = clampedInterpolate(
+    subtitleProgress,
+    [0, 1],
+    [40, 0],
+    Easing.out(Easing.cubic),
+  );
+  const subOpacity = clampedInterpolate(
+    subtitleProgress,
+    [0, 1],
+    [0, 1],
+    Easing.out(Easing.quad),
+  );
 
   return (
     <>
@@ -192,9 +232,24 @@ function renderCinematic(
     >
   >,
 ): React.ReactNode {
-  const lineWidth = clampedInterpolate(progress, [0, 0.3], [0, 100], Easing.out(Easing.cubic));
-  const titleClip = clampedInterpolate(progress, [0.15, 0.85], [100, 0], Easing.out(Easing.cubic));
-  const subOpacity = clampedInterpolate(subtitleProgress, [0, 1], [0, 1], Easing.out(Easing.quad));
+  const lineWidth = clampedInterpolate(
+    progress,
+    [0, 0.3],
+    [0, 100],
+    Easing.out(Easing.cubic),
+  );
+  const titleClip = clampedInterpolate(
+    progress,
+    [0.15, 0.85],
+    [100, 0],
+    Easing.out(Easing.cubic),
+  );
+  const subOpacity = clampedInterpolate(
+    subtitleProgress,
+    [0, 1],
+    [0, 1],
+    Easing.out(Easing.quad),
+  );
 
   return (
     <>
@@ -204,8 +259,18 @@ function renderCinematic(
           height: 2,
           backgroundColor: props.accentColor,
           marginBottom: 16,
-          marginLeft: props.align === "center" ? "auto" : props.align === "right" ? "auto" : 0,
-          marginRight: props.align === "center" ? "auto" : props.align === "left" ? "auto" : 0,
+          marginLeft:
+            props.align === "center"
+              ? "auto"
+              : props.align === "right"
+                ? "auto"
+                : 0,
+          marginRight:
+            props.align === "center"
+              ? "auto"
+              : props.align === "left"
+                ? "auto"
+                : 0,
           maxWidth: 120,
         }}
       />
@@ -262,11 +327,26 @@ function renderEditorial(
     >
   >,
 ): React.ReactNode {
-  const lineSlide = clampedInterpolate(progress, [0, 0.35], [0, 1], Easing.out(Easing.cubic));
+  const lineSlide = clampedInterpolate(
+    progress,
+    [0, 0.35],
+    [0, 1],
+    Easing.out(Easing.cubic),
+  );
   const words = title.split(" ");
   const wordCount = words.length;
-  const subSlideY = clampedInterpolate(subtitleProgress, [0, 1], [16, 0], Easing.out(Easing.cubic));
-  const subOpacity = clampedInterpolate(subtitleProgress, [0, 1], [0, 1], Easing.out(Easing.quad));
+  const subSlideY = clampedInterpolate(
+    subtitleProgress,
+    [0, 1],
+    [16, 0],
+    Easing.out(Easing.cubic),
+  );
+  const subOpacity = clampedInterpolate(
+    subtitleProgress,
+    [0, 1],
+    [0, 1],
+    Easing.out(Easing.quad),
+  );
 
   return (
     <>
@@ -360,8 +440,18 @@ function renderStacked(
 ): React.ReactNode {
   const letters = title.split("");
   const letterCount = letters.length;
-  const subSlide = clampedInterpolate(subtitleProgress, [0, 1], [20, 0], Easing.out(Easing.cubic));
-  const subOpacity = clampedInterpolate(subtitleProgress, [0, 1], [0, 1], Easing.out(Easing.quad));
+  const subSlide = clampedInterpolate(
+    subtitleProgress,
+    [0, 1],
+    [20, 0],
+    Easing.out(Easing.cubic),
+  );
+  const subOpacity = clampedInterpolate(
+    subtitleProgress,
+    [0, 1],
+    [0, 1],
+    Easing.out(Easing.quad),
+  );
 
   return (
     <>
@@ -458,7 +548,12 @@ function renderReveal(
   >,
 ): React.ReactNode {
   // Phase 1 (0-0.45): accent rect wipes in from left
-  const rectLeft = clampedInterpolate(progress, [0, 0.45], [100, 0], Easing.inOut(Easing.cubic));
+  const rectLeft = clampedInterpolate(
+    progress,
+    [0, 0.45],
+    [100, 0],
+    Easing.inOut(Easing.cubic),
+  );
   // Phase 2 (0.35-0.55): title text revealed behind rect
   const titleClip = clampedInterpolate(
     progress,
@@ -467,10 +562,25 @@ function renderReveal(
     Easing.out(Easing.cubic),
   );
   // Phase 3 (0.5-0.9): accent rect wipes away to the right
-  const rectRight = clampedInterpolate(progress, [0.5, 0.9], [0, 100], Easing.inOut(Easing.cubic));
+  const rectRight = clampedInterpolate(
+    progress,
+    [0.5, 0.9],
+    [0, 100],
+    Easing.inOut(Easing.cubic),
+  );
   // Phase 4 (0.7-1.0): subtitle fades in
-  const subOpacity = clampedInterpolate(progress, [0.7, 1], [0, 1], Easing.out(Easing.quad));
-  const subY = clampedInterpolate(progress, [0.7, 1], [8, 0], Easing.out(Easing.quad));
+  const subOpacity = clampedInterpolate(
+    progress,
+    [0.7, 1],
+    [0, 1],
+    Easing.out(Easing.quad),
+  );
+  const subY = clampedInterpolate(
+    progress,
+    [0.7, 1],
+    [8, 0],
+    Easing.out(Easing.quad),
+  );
 
   return (
     <div style={{ position: "relative" }}>
@@ -585,20 +695,56 @@ export const TitleCard: React.FC<TitleCardProps> = ({
   const renderContent = (): React.ReactNode => {
     switch (titleStyle) {
       case "minimal":
-        return renderMinimal(title, subtitle, progress, subtitleProgress, sharedProps);
+        return renderMinimal(
+          title,
+          subtitle,
+          progress,
+          subtitleProgress,
+          sharedProps,
+        );
       case "bold":
-        return renderBold(title, subtitle, progress, subtitleProgress, sharedProps);
+        return renderBold(
+          title,
+          subtitle,
+          progress,
+          subtitleProgress,
+          sharedProps,
+        );
       case "cinematic":
-        return renderCinematic(title, subtitle, progress, subtitleProgress, sharedProps);
+        return renderCinematic(
+          title,
+          subtitle,
+          progress,
+          subtitleProgress,
+          sharedProps,
+        );
       case "editorial":
-        return renderEditorial(title, subtitle, progress, subtitleProgress, sharedProps);
+        return renderEditorial(
+          title,
+          subtitle,
+          progress,
+          subtitleProgress,
+          sharedProps,
+        );
       case "stacked":
-        return renderStacked(title, subtitle, progress, subtitleProgress, sharedProps);
+        return renderStacked(
+          title,
+          subtitle,
+          progress,
+          subtitleProgress,
+          sharedProps,
+        );
       case "reveal":
         // Reveal manages its own subtitle timing via the overall progress
         return renderReveal(title, subtitle, progress, sharedProps);
       default:
-        return renderMinimal(title, subtitle, progress, subtitleProgress, sharedProps);
+        return renderMinimal(
+          title,
+          subtitle,
+          progress,
+          subtitleProgress,
+          sharedProps,
+        );
     }
   };
 
@@ -610,7 +756,11 @@ export const TitleCard: React.FC<TitleCardProps> = ({
         flexDirection: "column",
         justifyContent: "center",
         alignItems:
-          align === "center" ? "center" : align === "right" ? "flex-end" : "flex-start",
+          align === "center"
+            ? "center"
+            : align === "right"
+              ? "flex-end"
+              : "flex-start",
         ...style,
       }}
     >

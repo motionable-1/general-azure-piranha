@@ -1,7 +1,12 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, interpolate, Easing } from "remotion";
 
-export type HighlightStyle = "marker" | "underline" | "box" | "circle" | "strikethrough";
+export type HighlightStyle =
+  | "marker"
+  | "underline"
+  | "box"
+  | "circle"
+  | "strikethrough";
 
 export interface HighlightProps {
   children: React.ReactNode;
@@ -48,11 +53,16 @@ export const Highlight: React.FC<HighlightProps> = ({
   const delayFrames = Math.round(delay * fps);
   const durationFrames = Math.max(1, Math.round(duration * fps));
 
-  const progress = interpolate(frame - delayFrames, [0, durationFrames], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: Easing.out(Easing.cubic),
-  });
+  const progress = interpolate(
+    frame - delayFrames,
+    [0, durationFrames],
+    [0, 1],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+      easing: Easing.out(Easing.cubic),
+    },
+  );
 
   const getHighlightDecoration = (): React.CSSProperties => {
     switch (highlightStyle) {

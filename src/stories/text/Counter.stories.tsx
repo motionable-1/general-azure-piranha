@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Counter, RollingCounter } from "../../remotion/library/components/text";
+import {
+  Counter,
+  RollingCounter,
+} from "../../remotion/library/components/text";
 import { RemotionWrapper } from "../helpers/RemotionWrapper";
 
 const meta: Meta<typeof Counter> = {

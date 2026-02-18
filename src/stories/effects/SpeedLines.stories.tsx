@@ -43,7 +43,13 @@ export const Default: Story = {
 export const ActionImpact: Story = {
   render: () => (
     <AbsoluteFill>
-      <SpeedLines count={50} color="#ff4444" length={0.7} innerRadius={0.1} speed={15} />
+      <SpeedLines
+        count={50}
+        color="#ff4444"
+        length={0.7}
+        innerRadius={0.1}
+        speed={15}
+      />
       <div
         style={{
           position: "absolute",
@@ -65,8 +71,18 @@ export const ActionImpact: Story = {
 
 export const SubtleBackground: Story = {
   render: () => (
-    <AbsoluteFill style={{ background: "linear-gradient(135deg, #0f0c29, #302b63, #24243e)" }}>
-      <SpeedLines count={20} color="rgba(255,255,255,0.15)" length={0.3} innerRadius={0.3} speed={3} />
+    <AbsoluteFill
+      style={{
+        background: "linear-gradient(135deg, #0f0c29, #302b63, #24243e)",
+      }}
+    >
+      <SpeedLines
+        count={20}
+        color="rgba(255,255,255,0.15)"
+        length={0.3}
+        innerRadius={0.3}
+        speed={3}
+      />
       <div
         style={{
           position: "absolute",
@@ -95,7 +111,13 @@ export const AnimeStyle: Story = {
   ],
   render: () => (
     <AbsoluteFill>
-      <SpeedLines count={60} color="#ffffff" length={0.8} innerRadius={0.05} speed={20} />
+      <SpeedLines
+        count={60}
+        color="#ffffff"
+        length={0.8}
+        innerRadius={0.05}
+        speed={20}
+      />
     </AbsoluteFill>
   ),
 };

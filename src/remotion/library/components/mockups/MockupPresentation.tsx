@@ -24,7 +24,7 @@ export interface MockupPresentationProps {
 /**
  * 3D presentation container for mockups.
  * Adds perspective, floating animation, and elegant shadowing.
- * 
+ *
  * @example
  * <MockupPresentation rotateY={-15} float={20}>
  *   <PhoneMockup />
@@ -47,14 +47,10 @@ export const MockupPresentation: React.FC<MockupPresentationProps> = ({
   const time = frame / fps;
 
   // Float animation
-  const floatY = float > 0 
-    ? Math.sin(time * floatSpeed) * float 
-    : 0;
-    
+  const floatY = float > 0 ? Math.sin(time * floatSpeed) * float : 0;
+
   // Subtle rotation wiggles if floating
-  const wiggleY = float > 0 
-    ? Math.cos(time * floatSpeed * 0.5) * 2 
-    : 0;
+  const wiggleY = float > 0 ? Math.cos(time * floatSpeed * 0.5) * 2 : 0;
 
   return (
     <div
@@ -79,7 +75,7 @@ export const MockupPresentation: React.FC<MockupPresentationProps> = ({
         }}
       >
         {children}
-        
+
         {/* Contact Shadow */}
         {shadow && (
           <div
@@ -89,7 +85,8 @@ export const MockupPresentation: React.FC<MockupPresentationProps> = ({
               left: "10%",
               width: "80%",
               height: "20px",
-              background: "radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%, transparent 70%)",
+              background:
+                "radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%, transparent 70%)",
               filter: "blur(10px)",
               transform: `translateY(${50 + floatY * -0.5}px) rotateX(90deg) scale(${1 - floatY * 0.005})`,
               opacity: 1 - floatY * 0.01,
@@ -98,10 +95,10 @@ export const MockupPresentation: React.FC<MockupPresentationProps> = ({
             }}
           />
         )}
-        
+
         {/* Reflection (Simplified) */}
         {reflection && (
-           <div
+          <div
             style={{
               position: "absolute",
               top: "100%",

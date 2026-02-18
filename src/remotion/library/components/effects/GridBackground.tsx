@@ -81,7 +81,7 @@ export const GridBackground: React.FC<GridBackgroundProps> = ({
 
   // Animation offset for infinite scroll
   const offset = animate ? (frame / fps) * velocity : 0;
-  
+
   let offsetX = 0;
   let offsetY = 0;
 
@@ -99,7 +99,7 @@ export const GridBackground: React.FC<GridBackgroundProps> = ({
       offsetX = -offset;
       break;
   }
-  
+
   // Ensure smooth looping by using modulo if needed, but background-repeat handles it mostly.
   // For precise looping without jumps, we rely on CSS background-repeat.
 

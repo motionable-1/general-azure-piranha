@@ -56,26 +56,24 @@ function getDirectionOffsets(
         red: { x: 0, y: -intensity },
         blue: { x: 0, y: intensity },
       };
-    case "diagonal":
-      // 45-degree split — divide by sqrt(2) to maintain perceived magnitude
-      {
-        const diag = intensity / Math.SQRT2;
-        return {
-          red: { x: -diag, y: -diag },
-          blue: { x: diag, y: diag },
-        };
-      }
-    case "radial":
-      // Rotate the offset vector smoothly based on frame time
-      {
-        const angle = (frame / fps) * Math.PI * 2; // one full rotation per second
-        const cos = Math.cos(angle);
-        const sin = Math.sin(angle);
-        return {
-          red: { x: -intensity * cos, y: -intensity * sin },
-          blue: { x: intensity * cos, y: intensity * sin },
-        };
-      }
+    case "diagonal": // 45-degree split — divide by sqrt(2) to maintain perceived magnitude
+    {
+      const diag = intensity / Math.SQRT2;
+      return {
+        red: { x: -diag, y: -diag },
+        blue: { x: diag, y: diag },
+      };
+    }
+    case "radial": // Rotate the offset vector smoothly based on frame time
+    {
+      const angle = (frame / fps) * Math.PI * 2; // one full rotation per second
+      const cos = Math.cos(angle);
+      const sin = Math.sin(angle);
+      return {
+        red: { x: -intensity * cos, y: -intensity * sin },
+        blue: { x: intensity * cos, y: intensity * sin },
+      };
+    }
   }
 }
 

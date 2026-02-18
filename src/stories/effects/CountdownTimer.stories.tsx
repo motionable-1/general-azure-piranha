@@ -15,7 +15,10 @@ const meta: Meta<typeof CountdownTimer> = {
   ],
   argTypes: {
     from: { control: { type: "range", min: 1, max: 10, step: 1 } },
-    countdownStyle: { control: "select", options: ["flip", "slide", "fade", "minimal"] },
+    countdownStyle: {
+      control: "select",
+      options: ["flip", "slide", "fade", "minimal"],
+    },
     fontSize: { control: { type: "range", min: 40, max: 200, step: 10 } },
   },
 };
@@ -26,7 +29,13 @@ type Story = StoryObj<typeof CountdownTimer>;
 export const Fade: Story = {
   args: { from: 3, countdownStyle: "fade", fontSize: 120 },
   render: (args) => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <CountdownTimer {...args} />
     </AbsoluteFill>
   ),
@@ -34,15 +43,32 @@ export const Fade: Story = {
 
 export const Flip: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-      <CountdownTimer from={5} countdownStyle="flip" fontSize={100} accentColor="#4ECDC4" />
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <CountdownTimer
+        from={5}
+        countdownStyle="flip"
+        fontSize={100}
+        accentColor="#4ECDC4"
+      />
     </AbsoluteFill>
   ),
 };
 
 export const Slide: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <CountdownTimer from={3} countdownStyle="slide" fontSize={80} />
     </AbsoluteFill>
   ),

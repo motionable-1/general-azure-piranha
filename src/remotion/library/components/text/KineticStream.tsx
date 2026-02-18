@@ -1,10 +1,5 @@
 import React, { useId, useMemo } from "react";
-import {
-  useCurrentFrame,
-  useVideoConfig,
-  interpolate,
-  Easing,
-} from "remotion";
+import { useCurrentFrame, useVideoConfig, interpolate, Easing } from "remotion";
 import { toRemotionEasing } from "../../presets/remotionEasings";
 
 // ============================================
@@ -90,7 +85,7 @@ const useStreamTiming = (
   totalGroups: number,
   transitionDurationSec: number,
   totalDurationSecProp?: number,
-  delayAfterLastWordSec: number = 0
+  delayAfterLastWordSec: number = 0,
 ) => {
   const frame = useCurrentFrame();
   const { durationInFrames, fps } = useVideoConfig();
@@ -106,14 +101,11 @@ const useStreamTiming = (
   const durationPerGroup = effectiveDuration / totalGroups;
   const clampedTransitionFrames = Math.min(
     transitionFrames,
-    durationPerGroup * 0.9
+    durationPerGroup * 0.9,
   );
 
   const currentIndex = Math.floor(frame / durationPerGroup);
-  const safeCurrentIndex = Math.min(
-    totalGroups - 1,
-    Math.max(0, currentIndex)
-  );
+  const safeCurrentIndex = Math.min(totalGroups - 1, Math.max(0, currentIndex));
   const prevIndex = safeCurrentIndex - 1;
 
   // Fixed: absolute position instead of modulo — prevents phantom transitions during delay
@@ -123,7 +115,7 @@ const useStreamTiming = (
     timeInSlot,
     [0, clampedTransitionFrames],
     [0, 1],
-    { extrapolateRight: "clamp" }
+    { extrapolateRight: "clamp" },
   );
 
   const isTransitioning =
@@ -133,7 +125,7 @@ const useStreamTiming = (
     timeInSlot,
     [clampedTransitionFrames, durationPerGroup],
     [0, 1],
-    CLAMP
+    CLAMP,
   );
 
   return {
@@ -152,7 +144,7 @@ const useStreamTiming = (
 function getMotionBlur(
   progress: number,
   easing: (t: number) => number,
-  maxBlur: number = 8
+  maxBlur: number = 8,
 ): number {
   const dt = 0.02;
   const p0 = easing(Math.max(0, progress - dt));
@@ -233,7 +225,7 @@ export const SlideStream: React.FC<
       words.length,
       transitionDuration,
       duration,
-      delayAfterLastWord
+      delayAfterLastWord,
     );
 
   const currentWord = words[currentIndex];
@@ -339,7 +331,7 @@ export const SwipeStream: React.FC<KineticStreamProps> = ({
       words.length,
       transitionDuration,
       duration,
-      delayAfterLastWord
+      delayAfterLastWord,
     );
 
   const currentWord = words[currentIndex];
@@ -422,7 +414,7 @@ export const DynamicSizeStream: React.FC<KineticStreamProps> = ({
       words.length,
       transitionDuration,
       duration,
-      delayAfterLastWord
+      delayAfterLastWord,
     );
 
   const currentWord = words[currentIndex];
@@ -524,7 +516,7 @@ export const StompStream: React.FC<KineticStreamProps> = ({
       words.length,
       transitionDuration,
       duration,
-      delayAfterLastWord
+      delayAfterLastWord,
     );
 
   const currentWord = words[currentIndex];
@@ -545,8 +537,7 @@ export const StompStream: React.FC<KineticStreamProps> = ({
       shakeDecay
     : 0;
   const shakeY = shakeActive
-    ? (Math.sin(progress * 173) * 6 + Math.sin(progress * 347) * 4) *
-      shakeDecay
+    ? (Math.sin(progress * 173) * 6 + Math.sin(progress * 347) * 4) * shakeDecay
     : 0;
 
   // Phase 3 (0.3-1): Squash-settle
@@ -554,7 +545,7 @@ export const StompStream: React.FC<KineticStreamProps> = ({
     progress,
     [0.3, 0.45, 0.65, 1],
     [1, 0.97, 1.01, 1],
-    CLAMP
+    CLAMP,
   );
 
   const finalScale = isTransitioning
@@ -623,15 +614,13 @@ export const SlotMachineStream: React.FC<KineticStreamProps> = ({
       words.length,
       transitionDuration,
       duration,
-      delayAfterLastWord
+      delayAfterLastWord,
     );
 
   const currentWord = words[currentIndex];
   const prevWord = words[prevIndex];
 
-  const blur = isTransitioning
-    ? getMotionBlur(progress, E.appleSnap, 12)
-    : 0;
+  const blur = isTransitioning ? getMotionBlur(progress, E.appleSnap, 12) : 0;
 
   return (
     <StreamContainer
@@ -698,7 +687,7 @@ export const OutlineStream: React.FC<KineticStreamProps> = ({
       words.length,
       transitionDuration,
       duration,
-      delayAfterLastWord
+      delayAfterLastWord,
     );
 
   const currentWord = words[currentIndex];
@@ -806,7 +795,7 @@ export const ElasticStream: React.FC<KineticStreamProps> = ({
       words.length,
       transitionDuration,
       duration,
-      delayAfterLastWord
+      delayAfterLastWord,
     );
 
   const currentWord = words[currentIndex];
@@ -820,7 +809,12 @@ export const ElasticStream: React.FC<KineticStreamProps> = ({
       })
     : 1;
   const enterRotation = isTransitioning
-    ? interpolate(progress, [0.1, 0.35, 0.55, 0.75, 1], [0, 2, -1, 0.5, 0], CLAMP)
+    ? interpolate(
+        progress,
+        [0.1, 0.35, 0.55, 0.75, 1],
+        [0, 2, -1, 0.5, 0],
+        CLAMP,
+      )
     : 0;
 
   // Exit: stretch then collapse
@@ -891,7 +885,7 @@ export const BlockStream: React.FC<
       words.length,
       transitionDuration,
       duration,
-      delayAfterLastWord
+      delayAfterLastWord,
     );
 
   const currentWord = words[currentIndex];
@@ -931,11 +925,7 @@ export const BlockStream: React.FC<
     >
       <div style={{ position: "relative" }}>
         <div style={{ opacity: isTransitioning ? 0 : 1 }}>
-          {isTransitioning
-            ? isPhase1
-              ? prevWord
-              : currentWord
-            : currentWord}
+          {isTransitioning ? (isPhase1 ? prevWord : currentWord) : currentWord}
         </div>
         {isTransitioning && (
           <>
@@ -990,7 +980,7 @@ export const ChromaticStream: React.FC<KineticStreamProps> = ({
       words.length,
       transitionDuration,
       duration,
-      delayAfterLastWord
+      delayAfterLastWord,
     );
 
   const currentWord = words[currentIndex];
@@ -1112,7 +1102,7 @@ export const FlipTextStream: React.FC<KineticStreamProps> = ({
       words.length,
       transitionDuration,
       duration,
-      delayAfterLastWord
+      delayAfterLastWord,
     );
 
   const currentWord = words[currentIndex];
@@ -1218,7 +1208,7 @@ export const ZoomTextStream: React.FC<KineticStreamProps> = ({
       words.length,
       transitionDuration,
       duration,
-      delayAfterLastWord
+      delayAfterLastWord,
     );
 
   const currentWord = words[currentIndex];
@@ -1293,7 +1283,7 @@ export const BlurTextStream: React.FC<KineticStreamProps> = ({
       words.length,
       transitionDuration,
       duration,
-      delayAfterLastWord
+      delayAfterLastWord,
     );
 
   const currentWord = words[currentIndex];
@@ -1374,7 +1364,7 @@ export const SlicedStream: React.FC<KineticStreamProps> = ({
       words.length,
       transitionDuration,
       duration,
-      delayAfterLastWord
+      delayAfterLastWord,
     );
 
   const currentWord = words[currentIndex];
@@ -1470,7 +1460,7 @@ export const TurbulenceStream: React.FC<KineticStreamProps> = ({
       words.length,
       transitionDuration,
       duration,
-      delayAfterLastWord
+      delayAfterLastWord,
     );
 
   const currentWord = words[currentIndex];
@@ -1562,7 +1552,7 @@ export const NeonStream: React.FC<
       words.length,
       transitionDuration,
       duration,
-      delayAfterLastWord
+      delayAfterLastWord,
     );
 
   const currentWord = words[currentIndex];
@@ -1654,16 +1644,14 @@ export const PushStream: React.FC<
       words.length,
       transitionDuration,
       duration,
-      delayAfterLastWord
+      delayAfterLastWord,
     );
 
   const currentWord = words[currentIndex];
   const prevWord = words[prevIndex];
 
   // Velocity-based skew
-  const velocity = isTransitioning
-    ? getMotionBlur(progress, E.snappy, 1)
-    : 0;
+  const velocity = isTransitioning ? getMotionBlur(progress, E.snappy, 1) : 0;
   const skewAmount = withSkew ? velocity * 18 : 0;
 
   // Momentum compression (scaleY for vertical, scaleX for horizontal)

@@ -24,7 +24,10 @@ export interface SmokeProps {
   style?: React.CSSProperties;
 }
 
-const STYLE_CONFIG: Record<SmokeStyle, { blur: number; scale: number; count: number }> = {
+const STYLE_CONFIG: Record<
+  SmokeStyle,
+  { blur: number; scale: number; count: number }
+> = {
   fog: { blur: 80, scale: 2, count: 4 },
   haze: { blur: 60, scale: 1.5, count: 3 },
   wisps: { blur: 40, scale: 1, count: 5 },
@@ -86,7 +89,11 @@ export const Smoke: React.FC<SmokeProps> = ({
         ...style,
       }}
     >
-      <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }}>
+      <svg
+        width="100%"
+        height="100%"
+        style={{ position: "absolute", inset: 0 }}
+      >
         <defs>
           <filter id={filterId}>
             <feGaussianBlur stdDeviation={cfg.blur} />
@@ -95,8 +102,10 @@ export const Smoke: React.FC<SmokeProps> = ({
         <g filter={`url(#${filterId})`}>
           {smokeLayers.map((layer, i) => {
             const t = time * layer.speedMul;
-            const px = layer.x + dx * t * 10 + Math.sin(t * 0.5 + layer.phase) * 8;
-            const py = layer.y + dy * t * 10 + Math.cos(t * 0.3 + layer.phase) * 5;
+            const px =
+              layer.x + dx * t * 10 + Math.sin(t * 0.5 + layer.phase) * 8;
+            const py =
+              layer.y + dy * t * 10 + Math.cos(t * 0.3 + layer.phase) * 5;
             // Pulse opacity
             const pulseOpacity =
               layer.opacity * (0.8 + 0.2 * Math.sin(t * 0.7 + layer.phase));
@@ -104,8 +113,8 @@ export const Smoke: React.FC<SmokeProps> = ({
             return (
               <ellipse
                 key={i}
-                cx={`${((px % 120) + 120) % 120 - 10}%`}
-                cy={`${((py % 120) + 120) % 120 - 10}%`}
+                cx={`${(((px % 120) + 120) % 120) - 10}%`}
+                cy={`${(((py % 120) + 120) % 120) - 10}%`}
                 rx={`${layer.size}%`}
                 ry={`${layer.size * 0.6}%`}
                 fill={color}

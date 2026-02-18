@@ -14,7 +14,10 @@ const meta: Meta<typeof GradientBlur> = {
     ),
   ],
   argTypes: {
-    direction: { control: "select", options: ["top", "bottom", "left", "right", "radial", "edges"] },
+    direction: {
+      control: "select",
+      options: ["top", "bottom", "left", "right", "radial", "edges"],
+    },
     blur: { control: { type: "range", min: 2, max: 40, step: 2 } },
     size: { control: { type: "range", min: 0.1, max: 1, step: 0.05 } },
   },
@@ -28,7 +31,20 @@ export const BottomBlur: Story = {
   render: (args) => (
     <AbsoluteFill>
       <GradientBlur {...args} style={{ width: "100%", height: "100%" }}>
-        <div style={{ width: "100%", height: "100%", background: "linear-gradient(135deg, #667eea, #764ba2)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 48, fontWeight: 700, fontFamily: "system-ui" }}>
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            background: "linear-gradient(135deg, #667eea, #764ba2)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "#fff",
+            fontSize: 48,
+            fontWeight: 700,
+            fontFamily: "system-ui",
+          }}
+        >
           DEPTH OF FIELD
         </div>
       </GradientBlur>
@@ -39,8 +55,25 @@ export const BottomBlur: Story = {
 export const RadialFocus: Story = {
   render: () => (
     <AbsoluteFill>
-      <GradientBlur direction="radial" blur={20} size={0.5} style={{ width: "100%", height: "100%" }}>
-        <div style={{ width: "100%", height: "100%", background: "linear-gradient(180deg, #1a1a2e, #16213e)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 36, fontFamily: "system-ui" }}>
+      <GradientBlur
+        direction="radial"
+        blur={20}
+        size={0.5}
+        style={{ width: "100%", height: "100%" }}
+      >
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            background: "linear-gradient(180deg, #1a1a2e, #16213e)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "#fff",
+            fontSize: 36,
+            fontFamily: "system-ui",
+          }}
+        >
           Focus Center
         </div>
       </GradientBlur>

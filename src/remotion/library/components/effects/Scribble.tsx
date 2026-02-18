@@ -1,7 +1,20 @@
 import React, { useMemo } from "react";
-import { useCurrentFrame, useVideoConfig, interpolate, Easing, random } from "remotion";
+import {
+  useCurrentFrame,
+  useVideoConfig,
+  interpolate,
+  Easing,
+  random,
+} from "remotion";
 
-export type ScribbleShape = "circle" | "underline" | "arrow" | "cross" | "box" | "checkmark" | "highlight";
+export type ScribbleShape =
+  | "circle"
+  | "underline"
+  | "arrow"
+  | "cross"
+  | "box"
+  | "checkmark"
+  | "highlight";
 
 export interface ScribbleProps {
   /** Shape to draw */
@@ -45,14 +58,22 @@ function wobblePath(
     const prev = wobbled[i - 1];
     const curr = wobbled[i];
     // Quadratic bezier for hand-drawn feel
-    const cpx = (prev[0] + curr[0]) / 2 + (random(`${seed}-cpx-${i}`) - 0.5) * wobbleAmount * 1.5;
-    const cpy = (prev[1] + curr[1]) / 2 + (random(`${seed}-cpy-${i}`) - 0.5) * wobbleAmount * 1.5;
+    const cpx =
+      (prev[0] + curr[0]) / 2 +
+      (random(`${seed}-cpx-${i}`) - 0.5) * wobbleAmount * 1.5;
+    const cpy =
+      (prev[1] + curr[1]) / 2 +
+      (random(`${seed}-cpy-${i}`) - 0.5) * wobbleAmount * 1.5;
     d += ` Q ${cpx} ${cpy} ${curr[0]} ${curr[1]}`;
   }
   return d;
 }
 
-function getShapePoints(shape: ScribbleShape, w: number, h: number): Array<[number, number]> {
+function getShapePoints(
+  shape: ScribbleShape,
+  w: number,
+  h: number,
+): Array<[number, number]> {
   const cx = w / 2;
   const cy = h / 2;
   const rx = w * 0.42;
@@ -153,11 +174,16 @@ export const Scribble: React.FC<ScribbleProps> = ({
   const delayFrames = Math.round(delay * fps);
   const durationFrames = Math.max(1, Math.round(duration * fps));
 
-  const drawProgress = interpolate(frame - delayFrames, [0, durationFrames], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: Easing.out(Easing.quad),
-  });
+  const drawProgress = interpolate(
+    frame - delayFrames,
+    [0, durationFrames],
+    [0, 1],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+      easing: Easing.out(Easing.quad),
+    },
+  );
 
   const paths = useMemo(() => {
     return Array.from({ length: passes }).map((_, pass) => {

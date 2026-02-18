@@ -5,7 +5,6 @@ import {
   useVideoConfig,
   spring,
   interpolate,
-  Easing,
   Sequence,
 } from "remotion";
 import { Video } from "@remotion/media";
@@ -16,17 +15,17 @@ import { Letterbox } from "../../library/components/effects/Letterbox";
 import { FadeInChars } from "../../library/components/text/TextAnimation";
 import { loadFont as loadSpaceGrotesk } from "@remotion/google-fonts/SpaceGrotesk";
 
-const SFX = {
-  riser: "https://pub-e3bfc0083b0644b296a7080b21024c5f.r2.dev/sfx/1771450835442_0yv850jvpqw_sfx_rising_cinematic_tension_build.mp3",
-  impact: "https://pub-e3bfc0083b0644b296a7080b21024c5f.r2.dev/sfx/1771450826845_glo9tlq7rce_sfx_deep_cinematic_bass_impact_hit.mp3",
-};
+const SFX_RISER =
+  "https://pub-e3bfc0083b0644b296a7080b21024c5f.r2.dev/sfx/1771450936699_b1jm97xu0u9_sfx_rising_cinematic_tension_build.mp3";
+const SFX_IMPACT =
+  "https://pub-e3bfc0083b0644b296a7080b21024c5f.r2.dev/sfx/1771450939186_q5igs9ymwfj_sfx_deep_cinematic_bass_impact_hit.mp3";
 
 const VIDEO_URL =
   "https://pub-e3bfc0083b0644b296a7080b21024c5f.r2.dev/chat-videos/1771450550413_fzxchfcxzc9_source.mp4";
 
 export const IntroScene: React.FC = () => {
   const frame = useCurrentFrame();
-  const { fps, width, height } = useVideoConfig();
+  const { fps, height } = useVideoConfig();
   const { fontFamily } = loadSpaceGrotesk();
 
   // Dramatic zoom into video
@@ -38,12 +37,10 @@ export const IntroScene: React.FC = () => {
   const videoScale = interpolate(zoomProgress, [0, 1], [1.4, 1.05]);
 
   // Flash white on impact
-  const flashOpacity = interpolate(
-    frame,
-    [25, 30, 40],
-    [0, 0.9, 0],
-    { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
-  );
+  const flashOpacity = interpolate(frame, [25, 30, 40], [0, 0.9, 0], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
 
   // Title reveal timing
   const titleIn = spring({
@@ -63,20 +60,15 @@ export const IntroScene: React.FC = () => {
   const subOpacity = interpolate(subIn, [0, 1], [0, 1]);
 
   // Horizontal scan line
-  const scanY = interpolate(
-    frame,
-    [0, 90],
-    [-20, height + 20],
-    { extrapolateRight: "clamp" }
-  );
+  const scanY = interpolate(frame, [0, 90], [-20, height + 20], {
+    extrapolateRight: "clamp",
+  });
 
   // Chromatic aberration intensity
-  const chromaIntensity = interpolate(
-    frame,
-    [25, 32, 50],
-    [0, 8, 0],
-    { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
-  );
+  const chromaIntensity = interpolate(frame, [25, 32, 50], [0, 8, 0], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#000" }}>
@@ -84,7 +76,7 @@ export const IntroScene: React.FC = () => {
       <AbsoluteFill
         style={{
           transform: `scale(${videoScale})`,
-          filter: `saturate(1.2) contrast(1.1)`,
+          filter: "saturate(1.2) contrast(1.1)",
         }}
       >
         <Video
@@ -107,7 +99,8 @@ export const IntroScene: React.FC = () => {
               transform: `translate(${chromaIntensity}px, 0)`,
               mixBlendMode: "screen",
               opacity: 0.4,
-              background: `linear-gradient(90deg, rgba(255,0,0,0.15) 0%, transparent 50%)`,
+              background:
+                "linear-gradient(90deg, rgba(255,0,0,0.15) 0%, transparent 50%)",
             }}
           />
           <AbsoluteFill
@@ -115,7 +108,8 @@ export const IntroScene: React.FC = () => {
               transform: `translate(${-chromaIntensity}px, 0)`,
               mixBlendMode: "screen",
               opacity: 0.4,
-              background: `linear-gradient(270deg, rgba(0,100,255,0.15) 0%, transparent 50%)`,
+              background:
+                "linear-gradient(270deg, rgba(0,100,255,0.15) 0%, transparent 50%)",
             }}
           />
         </>
@@ -138,7 +132,8 @@ export const IntroScene: React.FC = () => {
           top: scanY,
           width: "100%",
           height: 3,
-          background: "linear-gradient(180deg, transparent, rgba(255,255,255,0.25), transparent)",
+          background:
+            "linear-gradient(180deg, transparent, rgba(255,255,255,0.25), transparent)",
           boxShadow: "0 0 30px 10px rgba(255,255,255,0.08)",
           pointerEvents: "none",
         }}
@@ -147,7 +142,8 @@ export const IntroScene: React.FC = () => {
       {/* Dark gradient overlay for text readability */}
       <AbsoluteFill
         style={{
-          background: `linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.1) 60%, rgba(0,0,0,0.4) 100%)`,
+          background:
+            "linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.1) 60%, rgba(0,0,0,0.4) 100%)",
         }}
       />
 
@@ -206,7 +202,7 @@ export const IntroScene: React.FC = () => {
             fontWeight: 500,
             color: "rgba(255,255,255,0.6)",
             letterSpacing: "0.3em",
-            textTransform: "uppercase",
+            textTransform: "uppercase" as const,
           }}
         >
           <span>CINEMATIC GLITCH &amp; FLOW</span>
@@ -216,7 +212,6 @@ export const IntroScene: React.FC = () => {
       {/* Decorative corner brackets */}
       {titleOpacity > 0.5 && (
         <>
-          {/* Top left */}
           <div
             style={{
               position: "absolute",
@@ -229,7 +224,6 @@ export const IntroScene: React.FC = () => {
               opacity: titleOpacity,
             }}
           />
-          {/* Bottom right */}
           <div
             style={{
               position: "absolute",
@@ -251,9 +245,9 @@ export const IntroScene: React.FC = () => {
       <Letterbox size={0.08} animateIn={1} />
 
       {/* Sound effects */}
-      <Audio src={SFX.riser} volume={0.3} />
+      <Audio src={SFX_RISER} volume={0.25} />
       <Sequence from={25}>
-        <Audio src={SFX.impact} volume={0.4} />
+        <Audio src={SFX_IMPACT} volume={0.35} />
       </Sequence>
     </AbsoluteFill>
   );

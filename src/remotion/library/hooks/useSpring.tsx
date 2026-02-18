@@ -64,11 +64,7 @@ export interface UseSpringReturn {
  * });
  */
 export function useSpring(options: UseSpringOptions = {}): UseSpringReturn {
-  const {
-    spring: springOption = "smooth",
-    delay = 0,
-    startFrame,
-  } = options;
+  const { spring: springOption = "smooth", delay = 0, startFrame } = options;
 
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();

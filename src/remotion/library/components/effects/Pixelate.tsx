@@ -77,16 +77,20 @@ export const Pixelate: React.FC<PixelateProps> = ({
 
   // "in" = sharp to pixelated (progress 0→1 maps to size 1→pixelSize)
   // "out" = pixelated to sharp (progress 0→1 maps to size pixelSize→1)
-  const currentPixelSize = direction === "out"
-    ? interpolate(progress, [0, 1], [pixelSize, 1])
-    : duration <= 0
-      ? pixelSize
-      : interpolate(progress, [0, 1], [1, pixelSize]);
+  const currentPixelSize =
+    direction === "out"
+      ? interpolate(progress, [0, 1], [pixelSize, 1])
+      : duration <= 0
+        ? pixelSize
+        : interpolate(progress, [0, 1], [1, pixelSize]);
 
   // No pixelation needed if pixel size is 1 or less
   if (currentPixelSize <= 1) {
     return (
-      <div className={className} style={{ width: "100%", height: "100%", ...style }}>
+      <div
+        className={className}
+        style={{ width: "100%", height: "100%", ...style }}
+      >
         {children}
       </div>
     );

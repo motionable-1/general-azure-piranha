@@ -78,9 +78,7 @@ export const Reflection: React.FC<ReflectionProps> = ({
       }}
     >
       {/* Original Content */}
-      <div style={{ position: "relative", zIndex: 2 }}>
-        {children}
-      </div>
+      <div style={{ position: "relative", zIndex: 2 }}>{children}</div>
 
       {/* Reflection */}
       <div

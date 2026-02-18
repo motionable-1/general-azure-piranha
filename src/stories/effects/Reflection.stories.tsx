@@ -47,7 +47,13 @@ export const Default: Story = {
     offset: 4,
   },
   render: (args) => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Reflection {...args}>
         <Card>Reflection</Card>
       </Reflection>
@@ -57,7 +63,13 @@ export const Default: Story = {
 
 export const AnimatedReveal: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Reflection opacity={0.3} blur={2} duration={0.8}>
         <Card>Fade In</Card>
       </Reflection>
@@ -88,7 +100,14 @@ export const ProductShowcase: Story = {
             boxShadow: "0 20px 60px rgba(240, 147, 251, 0.3)",
           }}
         >
-          <div style={{ fontSize: 48, fontWeight: 800, color: "#fff", fontFamily: "system-ui" }}>
+          <div
+            style={{
+              fontSize: 48,
+              fontWeight: 800,
+              color: "#fff",
+              fontFamily: "system-ui",
+            }}
+          >
             App
           </div>
         </div>
@@ -99,9 +118,17 @@ export const ProductShowcase: Story = {
 
 export const SharpReflection: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Reflection opacity={0.4} blur={0} offset={0} maskStart={0} maskEnd={0.6}>
-        <Card bg="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)">Sharp</Card>
+        <Card bg="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)">
+          Sharp
+        </Card>
       </Reflection>
     </AbsoluteFill>
   ),

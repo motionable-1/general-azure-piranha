@@ -2953,9 +2953,9 @@ export const MorphHighlight: Story = {
             ) {
               word.className = "morph-word";
               // Get chars within this word
-              const wordChars = (Array.from(word.querySelectorAll("div")) as HTMLElement[]).filter(
-                (el) => el.textContent && el.textContent.length === 1,
-              );
+              const wordChars = (
+                Array.from(word.querySelectorAll("div")) as HTMLElement[]
+              ).filter((el) => el.textContent && el.textContent.length === 1);
               wordChars.forEach((char) => {
                 char.style.display = "inline-block";
                 char.className = "morph-char";

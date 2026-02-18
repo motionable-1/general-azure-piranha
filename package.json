@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@remotion/google-fonts": "^4.0.414",
+    "@remotion/media": "^4.0.414",
     "@remotion/noise": "^4.0.414",
     "@remotion/player": "^4.0.414",
     "@remotion/transitions": "^4.0.414",

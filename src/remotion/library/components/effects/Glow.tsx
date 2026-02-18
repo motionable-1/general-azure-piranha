@@ -86,22 +86,22 @@ export const Glow: React.FC<GlowProps> = ({
 
   const dropShadows = useMemo(() => {
     if (layers <= 1) {
-        return `drop-shadow(0 0 ${currentIntensity}px ${color})${
-            spread > 0 ? ` drop-shadow(0 0 ${spread}px ${color})` : ""
-        }`;
+      return `drop-shadow(0 0 ${currentIntensity}px ${color})${
+        spread > 0 ? ` drop-shadow(0 0 ${spread}px ${color})` : ""
+      }`;
     }
 
     let shadows = "";
     for (let i = 0; i < layers; i++) {
-        const layerIntensity = currentIntensity * Math.pow(layerGrowth, i);
-        // We can also increase opacity falloff if we switched to box-shadow, 
-        // but for drop-shadow we just layer them. 
-        // Note: multiple drop-shadows on one element can be expensive, 
-        // but they look great.
-        // To avoid "solid" look, we might vary the color alpha if possible, 
-        // but color is a string. 
-        // Instead, we just stack them with increasing blur.
-        shadows += `drop-shadow(0 0 ${layerIntensity}px ${color}) `;
+      const layerIntensity = currentIntensity * Math.pow(layerGrowth, i);
+      // We can also increase opacity falloff if we switched to box-shadow,
+      // but for drop-shadow we just layer them.
+      // Note: multiple drop-shadows on one element can be expensive,
+      // but they look great.
+      // To avoid "solid" look, we might vary the color alpha if possible,
+      // but color is a string.
+      // Instead, we just stack them with increasing blur.
+      shadows += `drop-shadow(0 0 ${layerIntensity}px ${color}) `;
     }
     return shadows.trim();
   }, [currentIntensity, color, spread, layers, layerGrowth]);
@@ -201,20 +201,20 @@ export const AnimatedGlow: React.FC<AnimatedGlowProps> = ({
   ]);
 
   const dropShadows = useMemo(() => {
-      if (currentIntensity <= 0) return undefined;
-      
-      if (layers <= 1) {
-          return `drop-shadow(0 0 ${currentIntensity}px ${color})${
-              spread > 0 ? ` drop-shadow(0 0 ${spread}px ${color})` : ""
-          }`;
-      }
+    if (currentIntensity <= 0) return undefined;
 
-      let shadows = "";
-      for (let i = 0; i < layers; i++) {
-          const layerIntensity = currentIntensity * Math.pow(layerGrowth, i);
-          shadows += `drop-shadow(0 0 ${layerIntensity}px ${color}) `;
-      }
-      return shadows.trim();
+    if (layers <= 1) {
+      return `drop-shadow(0 0 ${currentIntensity}px ${color})${
+        spread > 0 ? ` drop-shadow(0 0 ${spread}px ${color})` : ""
+      }`;
+    }
+
+    let shadows = "";
+    for (let i = 0; i < layers; i++) {
+      const layerIntensity = currentIntensity * Math.pow(layerGrowth, i);
+      shadows += `drop-shadow(0 0 ${layerIntensity}px ${color}) `;
+    }
+    return shadows.trim();
   }, [currentIntensity, color, spread, layers, layerGrowth]);
 
   const glowStyle: CSSProperties = {

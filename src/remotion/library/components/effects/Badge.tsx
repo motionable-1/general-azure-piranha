@@ -2,7 +2,12 @@ import React from "react";
 import { useCurrentFrame, useVideoConfig, interpolate, Easing } from "remotion";
 
 export type BadgeStyle = "solid" | "outline" | "gradient" | "glass" | "neon";
-export type BadgeAnimation = "fadeIn" | "scaleIn" | "slideDown" | "bounce" | "none";
+export type BadgeAnimation =
+  | "fadeIn"
+  | "scaleIn"
+  | "slideDown"
+  | "bounce"
+  | "none";
 
 export interface BadgeProps {
   children: React.ReactNode;
@@ -64,11 +69,16 @@ export const Badge: React.FC<BadgeProps> = ({
   const delayFrames = Math.round(delay * fps);
   const durationFrames = Math.max(1, Math.round(duration * fps));
 
-  const progress = interpolate(frame - delayFrames, [0, durationFrames], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: Easing.out(Easing.back(1.5)),
-  });
+  const progress = interpolate(
+    frame - delayFrames,
+    [0, durationFrames],
+    [0, 1],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+      easing: Easing.out(Easing.back(1.5)),
+    },
+  );
 
   const getAnimationStyle = (): React.CSSProperties => {
     if (animation === "none") return {};
@@ -144,7 +154,8 @@ export const Badge: React.FC<BadgeProps> = ({
         fontSize,
         fontWeight,
         fontFamily: "system-ui, sans-serif",
-        color: badgeStyle === "outline" || badgeStyle === "neon" ? color : textColor,
+        color:
+          badgeStyle === "outline" || badgeStyle === "neon" ? color : textColor,
         whiteSpace: "nowrap",
         ...getVisualStyle(),
         ...getAnimationStyle(),

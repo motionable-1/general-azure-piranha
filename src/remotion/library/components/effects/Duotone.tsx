@@ -44,14 +44,14 @@ export interface DuotoneProps {
 // ---------------------------------------------------------------------------
 
 const PRESETS: Record<DuotonePreset, { shadow: string; highlight: string }> = {
-  midnight:   { shadow: "#0d1b2a", highlight: "#415a77" },
-  sunset:     { shadow: "#2d0b41", highlight: "#ff6b35" },
-  neon:       { shadow: "#0a0a2e", highlight: "#00ff88" },
-  vintage:    { shadow: "#3d2b1f", highlight: "#d4a574" },
-  ocean:      { shadow: "#0b132b", highlight: "#3a86ff" },
-  fire:       { shadow: "#1a0000", highlight: "#ff4500" },
-  forest:     { shadow: "#0a1a0a", highlight: "#4ade80" },
-  candy:      { shadow: "#2d1b4e", highlight: "#f472b6" },
+  midnight: { shadow: "#0d1b2a", highlight: "#415a77" },
+  sunset: { shadow: "#2d0b41", highlight: "#ff6b35" },
+  neon: { shadow: "#0a0a2e", highlight: "#00ff88" },
+  vintage: { shadow: "#3d2b1f", highlight: "#d4a574" },
+  ocean: { shadow: "#0b132b", highlight: "#3a86ff" },
+  fire: { shadow: "#1a0000", highlight: "#ff4500" },
+  forest: { shadow: "#0a1a0a", highlight: "#4ade80" },
+  candy: { shadow: "#2d1b4e", highlight: "#f472b6" },
   monochrome: { shadow: "#111111", highlight: "#cccccc" },
 };
 
@@ -120,18 +120,25 @@ export const Duotone: React.FC<DuotoneProps> = ({
 
   // Resolve colours — preset wins over explicit props
   const shadowColor = preset ? PRESETS[preset].shadow : shadowColorProp;
-  const highlightColor = preset ? PRESETS[preset].highlight : highlightColorProp;
+  const highlightColor = preset
+    ? PRESETS[preset].highlight
+    : highlightColorProp;
 
   // Animated intensity
   const effectiveIntensity = useMemo(() => {
     if (!animated) return intensity;
     const delayFrames = Math.round(delay * fps);
     const durationFrames = Math.max(1, Math.round(duration * fps));
-    return interpolate(frame - delayFrames, [0, durationFrames], [0, intensity], {
-      extrapolateLeft: "clamp",
-      extrapolateRight: "clamp",
-      easing: Easing.inOut(Easing.cubic),
-    });
+    return interpolate(
+      frame - delayFrames,
+      [0, durationFrames],
+      [0, intensity],
+      {
+        extrapolateLeft: "clamp",
+        extrapolateRight: "clamp",
+        easing: Easing.inOut(Easing.cubic),
+      },
+    );
   }, [animated, intensity, frame, fps, delay, duration]);
 
   // Parse colours and build feComponentTransfer table values

@@ -112,11 +112,16 @@ export const PieChart: React.FC<PieChartProps> = ({
   const delayFrames = Math.round(delay * fps);
   const durationFrames = Math.max(1, Math.round(duration * fps));
 
-  const progress = interpolate(frame - delayFrames, [0, durationFrames], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: Easing.out(Easing.cubic),
-  });
+  const progress = interpolate(
+    frame - delayFrames,
+    [0, durationFrames],
+    [0, 1],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+      easing: Easing.out(Easing.cubic),
+    },
+  );
 
   const total = slices.reduce((sum, s) => sum + s.value, 0);
   const cx = size / 2;

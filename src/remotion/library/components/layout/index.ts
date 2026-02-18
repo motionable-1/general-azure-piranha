@@ -13,7 +13,11 @@ export {
   type TransitionType,
   type TimingType,
 } from "./Transition";
-export { SplitScreen, type SplitScreenProps, type SplitLayout } from "./SplitScreen";
+export {
+  SplitScreen,
+  type SplitScreenProps,
+  type SplitLayout,
+} from "./SplitScreen";
 export { Grid, type GridProps } from "./Grid";
 export {
   CircleLayout,
@@ -38,4 +42,8 @@ export {
   type PullOutProps,
   type ShakeProps,
 } from "./Camera";
-export { MaskedReveal, type MaskedRevealProps, type RevealType } from "./MaskedReveal";
+export {
+  MaskedReveal,
+  type MaskedRevealProps,
+  type RevealType,
+} from "./MaskedReveal";

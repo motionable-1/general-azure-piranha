@@ -48,7 +48,6 @@ export interface TrimPathProps {
   className?: string;
 }
 
-
 /**
  * Animated SVG path drawing using stroke-dasharray/dashoffset.
  *

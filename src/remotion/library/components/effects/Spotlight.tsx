@@ -68,7 +68,8 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 
   const currentX = fromX !== undefined ? fromX + (x - fromX) * progress : x;
   const currentY = fromY !== undefined ? fromY + (y - fromY) * progress : y;
-  const currentSize = fromSize !== undefined ? fromSize + (size - fromSize) * progress : size;
+  const currentSize =
+    fromSize !== undefined ? fromSize + (size - fromSize) * progress : size;
 
   const innerStop = Math.max(0, currentSize - softness);
 
@@ -79,7 +80,13 @@ export const Spotlight: React.FC<SpotlightProps> = ({
         position: "absolute",
         inset: 0,
         pointerEvents: "none",
-        background: `radial-gradient(circle at ${currentX}% ${currentY}%, ${color ? `${color}00` : "transparent"} ${innerStop}%, ${color ? `${color}${Math.round(darkness * 255).toString(16).padStart(2, "0")}` : `rgba(0,0,0,${darkness})`} ${currentSize}%)`,
+        background: `radial-gradient(circle at ${currentX}% ${currentY}%, ${color ? `${color}00` : "transparent"} ${innerStop}%, ${
+          color
+            ? `${color}${Math.round(darkness * 255)
+                .toString(16)
+                .padStart(2, "0")}`
+            : `rgba(0,0,0,${darkness})`
+        } ${currentSize}%)`,
         zIndex: 5,
         ...style,
       }}

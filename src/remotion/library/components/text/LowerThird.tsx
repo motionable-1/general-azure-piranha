@@ -1,7 +1,12 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, interpolate, Easing } from "remotion";
 
-export type LowerThirdStyle = "minimal" | "boxed" | "accent" | "split" | "gradient";
+export type LowerThirdStyle =
+  | "minimal"
+  | "boxed"
+  | "accent"
+  | "split"
+  | "gradient";
 
 export interface LowerThirdProps {
   /** Primary title text */
@@ -64,18 +69,27 @@ export const LowerThird: React.FC<LowerThirdProps> = ({
   const delayFrames = Math.round(delay * fps);
   const durationFrames = Math.max(1, Math.round(duration * fps));
 
-  const slideIn = interpolate(frame - delayFrames, [0, durationFrames], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: Easing.out(Easing.cubic),
-  });
+  const slideIn = interpolate(
+    frame - delayFrames,
+    [0, durationFrames],
+    [0, 1],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+      easing: Easing.out(Easing.cubic),
+    },
+  );
 
   const subtitleDelay = durationFrames * 0.4;
   const subtitleIn = interpolate(
     frame - delayFrames - subtitleDelay,
     [0, durationFrames * 0.6],
     [0, 1],
-    { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) },
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+      easing: Easing.out(Easing.cubic),
+    },
   );
 
   const getStyles = () => {

@@ -19,7 +19,10 @@ export interface WiggleProps {
   style?: React.CSSProperties;
 }
 
-const MODE_CONFIG: Record<WiggleMode, { x: number; y: number; rot: number; scl: number; freq: number }> = {
+const MODE_CONFIG: Record<
+  WiggleMode,
+  { x: number; y: number; rot: number; scl: number; freq: number }
+> = {
   handheld: { x: 3, y: 2, rot: 0.3, scl: 0.002, freq: 2 },
   jitter: { x: 1.5, y: 1.5, rot: 0.5, scl: 0, freq: 8 },
   earthquake: { x: 12, y: 8, rot: 1.5, scl: 0.01, freq: 15 },

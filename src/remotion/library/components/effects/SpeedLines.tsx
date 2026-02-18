@@ -21,7 +21,7 @@ export interface SpeedLinesProps {
 /**
  * Anime-style action speed lines (Manga effect).
  * Great for high-energy transitions or impacts.
- * 
+ *
  * @example
  * <SpeedLines color="#ffffff" count={40} speed={2} />
  */
@@ -37,7 +37,7 @@ export const SpeedLines: React.FC<SpeedLinesProps> = ({
 }) => {
   const frame = useCurrentFrame();
   const { width, height } = useVideoConfig();
-  
+
   const radius = Math.max(width, height) * 0.8;
   const cx = width / 2;
   const cy = height / 2;
@@ -78,30 +78,35 @@ export const SpeedLines: React.FC<SpeedLinesProps> = ({
       >
         <defs>
           <mask id="center-mask">
-             <rect x="0" y="0" width={width} height={height} fill="white" />
-             <circle cx={cx} cy={cy} r={Math.min(width, height) * innerRadius} fill="black" />
+            <rect x="0" y="0" width={width} height={height} fill="white" />
+            <circle
+              cx={cx}
+              cy={cy}
+              r={Math.min(width, height) * innerRadius}
+              fill="black"
+            />
           </mask>
         </defs>
-        
-        <g mask="url(#center-mask)">
-            {lines.map((line, i) => {
-                // End closer to center based on length
-                // length 1 = touches center
-                // length 0 = stays at edge
-                const rEnd = radius * 2 * (1 - line.len);
 
-                return (
-                    <polygon
-                        key={i}
-                        points={`
+        <g mask="url(#center-mask)">
+          {lines.map((line, i) => {
+            // End closer to center based on length
+            // length 1 = touches center
+            // length 0 = stays at edge
+            const rEnd = radius * 2 * (1 - line.len);
+
+            return (
+              <polygon
+                key={i}
+                points={`
                             ${cx + Math.cos(line.angle - 0.01 * line.width) * radius * 2},${cy + Math.sin(line.angle - 0.01 * line.width) * radius * 2}
                             ${cx + Math.cos(line.angle + 0.01 * line.width) * radius * 2},${cy + Math.sin(line.angle + 0.01 * line.width) * radius * 2}
                             ${cx + Math.cos(line.angle) * rEnd},${cy + Math.sin(line.angle) * rEnd}
                         `}
-                        fill={color}
-                    />
-                );
-            })}
+                fill={color}
+              />
+            );
+          })}
         </g>
       </svg>
     </div>

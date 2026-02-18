@@ -43,15 +43,15 @@ const directionToAngle: Record<GradientDirection, number> = {
 /**
  * Animation types for the gradient
  */
-export type GradientAnimationType = 
-  | "shift"      // Colors shift positions
-  | "rotate"     // Gradient rotates
-  | "pulse"      // Colors pulse in intensity
-  | "breathe"    // Smooth breathing effect on color positions
-  | "wave";      // Wave-like motion in color positions
+export type GradientAnimationType =
+  | "shift" // Colors shift positions
+  | "rotate" // Gradient rotates
+  | "pulse" // Colors pulse in intensity
+  | "breathe" // Smooth breathing effect on color positions
+  | "wave"; // Wave-like motion in color positions
 
 export interface LinearGradientProps {
-  /** 
+  /**
    * Array of colors. Can be simple strings or ColorStop objects with positions.
    * Simple strings will be evenly distributed.
    * @example ["#000000", "#4a1a7a", "#b794d4"]
@@ -80,16 +80,16 @@ export interface LinearGradientProps {
 
 /**
  * LinearGradient - A customizable linear gradient background component
- * 
+ *
  * Creates smooth linear gradients with multiple color stops and optional animation.
- * 
+ *
  * @example
  * // Simple colors (evenly distributed)
  * <LinearGradient colors={["#000000", "#4a1a7a", "#b794d4"]} />
- * 
+ *
  * @example
  * // With custom positions
- * <LinearGradient 
+ * <LinearGradient
  *   colors={[
  *     { color: "#000000", position: 0 },
  *     { color: "#1a0a2e", position: 25 },
@@ -97,19 +97,19 @@ export interface LinearGradientProps {
  *     { color: "#b794d4", position: 100 },
  *   ]}
  * />
- * 
+ *
  * @example
  * // With animation
- * <LinearGradient 
+ * <LinearGradient
  *   colors={["#000", "#4a1a7a", "#b794d4"]}
  *   animate
  *   animationType="breathe"
  *   speed={0.3}
  * />
- * 
+ *
  * @example
  * // Horizontal gradient with noise
- * <LinearGradient 
+ * <LinearGradient
  *   colors={["#000", "#333", "#666"]}
  *   direction="to-right"
  *   noise={0.05}
@@ -133,7 +133,10 @@ export const LinearGradient: React.FC<LinearGradientProps> = ({
   // Normalize colors to ColorStop array
   const colorStops = useMemo((): ColorStop[] => {
     if (!colors || colors.length === 0) {
-      return [{ color: "#000000", position: 0 }, { color: "#ffffff", position: 100 }];
+      return [
+        { color: "#000000", position: 0 },
+        { color: "#ffffff", position: 100 },
+      ];
     }
 
     // Convert simple string array to ColorStop array
@@ -174,36 +177,43 @@ export const LinearGradient: React.FC<LinearGradientProps> = ({
           angle = baseAngle + animProgress * 360;
           break;
         }
-        
+
         case "shift": {
           // Shift color positions
           const shiftAmount = Math.sin(animProgress * Math.PI * 2) * 10;
           stops = colorStops.map((stop, index) => ({
             ...stop,
-            position: Math.max(0, Math.min(100, 
-              (stop.position ?? (index / (colorStops.length - 1)) * 100) + shiftAmount
-            )),
+            position: Math.max(
+              0,
+              Math.min(
+                100,
+                (stop.position ?? (index / (colorStops.length - 1)) * 100) +
+                  shiftAmount,
+              ),
+            ),
           }));
           break;
         }
-        
+
         case "pulse": {
           // Pulse colors brighter/darker (via opacity overlay later)
           break;
         }
-        
+
         case "breathe": {
           // Smooth breathing effect on positions
-          const breatheProgress = Math.sin(animProgress * Math.PI * 2) * 0.5 + 0.5;
+          const breatheProgress =
+            Math.sin(animProgress * Math.PI * 2) * 0.5 + 0.5;
           stops = colorStops.map((stop, index) => {
-            const basePos = stop.position ?? (index / (colorStops.length - 1)) * 100;
+            const basePos =
+              stop.position ?? (index / (colorStops.length - 1)) * 100;
             const centerPos = 50;
-            const offset = (basePos - centerPos) * interpolate(
-              breatheProgress,
-              [0, 1],
-              [0.95, 1.05],
-              { extrapolateRight: "clamp", extrapolateLeft: "clamp" }
-            );
+            const offset =
+              (basePos - centerPos) *
+              interpolate(breatheProgress, [0, 1], [0.95, 1.05], {
+                extrapolateRight: "clamp",
+                extrapolateLeft: "clamp",
+              });
             return {
               ...stop,
               position: Math.max(0, Math.min(100, centerPos + offset)),
@@ -211,12 +221,14 @@ export const LinearGradient: React.FC<LinearGradientProps> = ({
           });
           break;
         }
-        
+
         case "wave": {
           // Wave motion through color stops
           stops = colorStops.map((stop, index) => {
-            const basePos = stop.position ?? (index / (colorStops.length - 1)) * 100;
-            const waveOffset = Math.sin(animProgress * Math.PI * 2 + index * 0.5) * 5;
+            const basePos =
+              stop.position ?? (index / (colorStops.length - 1)) * 100;
+            const waveOffset =
+              Math.sin(animProgress * Math.PI * 2 + index * 0.5) * 5;
             return {
               ...stop,
               position: Math.max(0, Math.min(100, basePos + waveOffset)),
@@ -243,7 +255,7 @@ export const LinearGradient: React.FC<LinearGradientProps> = ({
       Math.sin(animProgress * Math.PI * 2),
       [-1, 1],
       [0, 0.1],
-      { extrapolateRight: "clamp", extrapolateLeft: "clamp" }
+      { extrapolateRight: "clamp", extrapolateLeft: "clamp" },
     );
   }, [animate, animationType, animProgress]);
 

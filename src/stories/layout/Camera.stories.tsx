@@ -400,7 +400,7 @@ export const ShakeEffect: Story = {
 const FloatScene = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  
+
   // Use sine waves with different frequencies for organic motion
   const time = frame / fps;
   const x = Math.sin(time * 0.8) * 12 + Math.sin(time * 1.3) * 5;
@@ -420,7 +420,8 @@ const FloatScene = () => {
     >
       <AbsoluteFill
         style={{
-          background: "linear-gradient(135deg, #1a1a3e 0%, #0d1b2a 50%, #1b263b 100%)",
+          background:
+            "linear-gradient(135deg, #1a1a3e 0%, #0d1b2a 50%, #1b263b 100%)",
         }}
       >
         {/* Subtle stars */}
@@ -477,7 +478,8 @@ const FloatScene = () => {
             width: 400,
             height: 400,
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%)",
+            background:
+              "radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%)",
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",

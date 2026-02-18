@@ -56,11 +56,16 @@ export const Divider: React.FC<DividerProps> = ({
   const delayFrames = Math.round(delay * fps);
   const durationFrames = Math.max(1, Math.round(duration * fps));
 
-  const progress = interpolate(frame - delayFrames, [0, durationFrames], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: Easing.out(Easing.cubic),
-  });
+  const progress = interpolate(
+    frame - delayFrames,
+    [0, durationFrames],
+    [0, 1],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+      easing: Easing.out(Easing.cubic),
+    },
+  );
 
   const isH = orientation === "horizontal";
   const lengthVal = typeof length === "number" ? `${length}px` : length;
@@ -76,9 +81,7 @@ export const Divider: React.FC<DividerProps> = ({
         return {
           ...base,
           backgroundColor: color,
-          transform: isH
-            ? `scaleX(${progress})`
-            : `scaleY(${progress})`,
+          transform: isH ? `scaleX(${progress})` : `scaleY(${progress})`,
           transformOrigin: isH ? "left center" : "center top",
         };
 
@@ -88,9 +91,7 @@ export const Divider: React.FC<DividerProps> = ({
           background: isH
             ? `linear-gradient(90deg, ${color}, ${colorEnd ?? "transparent"})`
             : `linear-gradient(180deg, ${color}, ${colorEnd ?? "transparent"})`,
-          transform: isH
-            ? `scaleX(${progress})`
-            : `scaleY(${progress})`,
+          transform: isH ? `scaleX(${progress})` : `scaleY(${progress})`,
           transformOrigin: isH ? "left center" : "center top",
         };
 
@@ -100,9 +101,7 @@ export const Divider: React.FC<DividerProps> = ({
           backgroundImage: isH
             ? `repeating-linear-gradient(90deg, ${color} 0px, ${color} 8px, transparent 8px, transparent 16px)`
             : `repeating-linear-gradient(180deg, ${color} 0px, ${color} 8px, transparent 8px, transparent 16px)`,
-          transform: isH
-            ? `scaleX(${progress})`
-            : `scaleY(${progress})`,
+          transform: isH ? `scaleX(${progress})` : `scaleY(${progress})`,
           transformOrigin: isH ? "left center" : "center top",
         };
 
@@ -111,9 +110,7 @@ export const Divider: React.FC<DividerProps> = ({
           ...base,
           backgroundColor: color,
           boxShadow: `0 0 ${glowRadius}px ${color}`,
-          transform: isH
-            ? `scaleX(${progress})`
-            : `scaleY(${progress})`,
+          transform: isH ? `scaleX(${progress})` : `scaleY(${progress})`,
           transformOrigin: isH ? "left center" : "center top",
         };
 

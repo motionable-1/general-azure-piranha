@@ -67,7 +67,14 @@ function renderShape(
   switch (shape) {
     case "circle":
       return (
-        <circle cx={C} cy={C} r={C - inset} fill={fill} stroke={stroke} strokeWidth={sw} />
+        <circle
+          cx={C}
+          cy={C}
+          r={C - inset}
+          fill={fill}
+          stroke={stroke}
+          strokeWidth={sw}
+        />
       );
 
     case "ring":
@@ -103,7 +110,12 @@ function renderShape(
       const bl = `${inset},${inset + h}`;
       const br = `${100 - inset},${inset + h}`;
       return (
-        <polygon points={`${top} ${br} ${bl}`} fill={fill} stroke={stroke} strokeWidth={sw} />
+        <polygon
+          points={`${top} ${br} ${bl}`}
+          fill={fill}
+          stroke={stroke}
+          strokeWidth={sw}
+        />
       );
     }
 
@@ -113,7 +125,9 @@ function renderShape(
         const a = (Math.PI / 3) * i - Math.PI / 2;
         return `${C + r * Math.cos(a)},${C + r * Math.sin(a)}`;
       }).join(" ");
-      return <polygon points={pts} fill={fill} stroke={stroke} strokeWidth={sw} />;
+      return (
+        <polygon points={pts} fill={fill} stroke={stroke} strokeWidth={sw} />
+      );
     }
 
     case "star": {
@@ -124,7 +138,9 @@ function renderShape(
         const r = i % 2 === 0 ? outer : inner;
         return `${C + r * Math.cos(a)},${C + r * Math.sin(a)}`;
       }).join(" ");
-      return <polygon points={pts} fill={fill} stroke={stroke} strokeWidth={sw} />;
+      return (
+        <polygon points={pts} fill={fill} stroke={stroke} strokeWidth={sw} />
+      );
     }
 
     case "cross": {
@@ -142,7 +158,9 @@ function renderShape(
     case "diamond": {
       const r = C - inset;
       const pts = `${C},${C - r} ${C + r},${C} ${C},${C + r} ${C - r},${C}`;
-      return <polygon points={pts} fill={fill} stroke={stroke} strokeWidth={sw} />;
+      return (
+        <polygon points={pts} fill={fill} stroke={stroke} strokeWidth={sw} />
+      );
     }
 
     case "semicircle": {
@@ -266,17 +284,32 @@ export const ShapeAnimation: React.FC<ShapeAnimationProps> = ({
     switch (animation) {
       case "rotate": {
         const angle = time * 360;
-        return { transform: `rotate(${angle}deg)`, opacity, dashOffset: undefined, dashArray: undefined };
+        return {
+          transform: `rotate(${angle}deg)`,
+          opacity,
+          dashOffset: undefined,
+          dashArray: undefined,
+        };
       }
 
       case "scale": {
         const s = 1 + 0.2 * Math.sin(time * Math.PI * 2);
-        return { transform: `scale(${s})`, opacity, dashOffset: undefined, dashArray: undefined };
+        return {
+          transform: `scale(${s})`,
+          opacity,
+          dashOffset: undefined,
+          dashArray: undefined,
+        };
       }
 
       case "pulse": {
         const o = 0.5 + 0.5 * (0.5 + 0.5 * Math.sin(time * Math.PI * 2));
-        return { transform: "", opacity: o * opacity, dashOffset: undefined, dashArray: undefined };
+        return {
+          transform: "",
+          opacity: o * opacity,
+          dashOffset: undefined,
+          dashArray: undefined,
+        };
       }
 
       case "morph": {
@@ -302,7 +335,11 @@ export const ShapeAnimation: React.FC<ShapeAnimationProps> = ({
           effectiveFrame,
           [0, durationFrames],
           [0, 1],
-          { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.cubic) },
+          {
+            extrapolateLeft: "clamp",
+            extrapolateRight: "clamp",
+            easing: Easing.inOut(Easing.cubic),
+          },
         );
         return {
           transform: "",
@@ -315,13 +352,32 @@ export const ShapeAnimation: React.FC<ShapeAnimationProps> = ({
       case "breathe": {
         const s = 1 + 0.12 * Math.sin(time * Math.PI);
         const o = 0.85 + 0.15 * Math.sin(time * Math.PI);
-        return { transform: `scale(${s})`, opacity: o * opacity, dashOffset: undefined, dashArray: undefined };
+        return {
+          transform: `scale(${s})`,
+          opacity: o * opacity,
+          dashOffset: undefined,
+          dashArray: undefined,
+        };
       }
 
       default:
-        return { transform: "", opacity, dashOffset: undefined, dashArray: undefined };
+        return {
+          transform: "",
+          opacity,
+          dashOffset: undefined,
+          dashArray: undefined,
+        };
     }
-  }, [animation, time, opacity, hasStarted, effectiveFrame, durationFrames, shape, strokeWidth]);
+  }, [
+    animation,
+    time,
+    opacity,
+    hasStarted,
+    effectiveFrame,
+    durationFrames,
+    shape,
+    strokeWidth,
+  ]);
 
   // For "draw" animation, force stroked rendering
   const isDraw = animation === "draw";
@@ -336,10 +392,14 @@ export const ShapeAnimation: React.FC<ShapeAnimationProps> = ({
   // Apply stroke-dasharray / dashoffset for draw animation
   const svgStyle: React.CSSProperties | undefined =
     isDraw && animValues.dashArray != null
-      ? { strokeDasharray: animValues.dashArray, strokeDashoffset: animValues.dashOffset }
+      ? {
+          strokeDasharray: animValues.dashArray,
+          strokeDashoffset: animValues.dashOffset,
+        }
       : undefined;
 
-  const morphBorderRadius = (animValues as { borderRadius?: string }).borderRadius;
+  const morphBorderRadius = (animValues as { borderRadius?: string })
+    .borderRadius;
 
   return (
     <div

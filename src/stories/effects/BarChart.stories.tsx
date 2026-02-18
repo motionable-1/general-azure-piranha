@@ -20,7 +20,13 @@ type Story = StoryObj<typeof BarChart>;
 
 export const Vertical: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <BarChart
         bars={[
           { value: 85, label: "React", color: "#61DAFB" },
@@ -39,7 +45,13 @@ export const Vertical: Story = {
 
 export const Horizontal: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <BarChart
         bars={[
           { value: 92, label: "Q1", color: "#4ECDC4" },

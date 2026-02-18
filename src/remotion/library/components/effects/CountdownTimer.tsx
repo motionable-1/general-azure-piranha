@@ -108,10 +108,15 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({
         };
       }
       case "minimal": {
-        const opacity = interpolate(fractional, [0, 0.05, 0.8, 1], [0, 1, 1, 0], {
-          extrapolateLeft: "clamp",
-          extrapolateRight: "clamp",
-        });
+        const opacity = interpolate(
+          fractional,
+          [0, 0.05, 0.8, 1],
+          [0, 1, 1, 0],
+          {
+            extrapolateLeft: "clamp",
+            extrapolateRight: "clamp",
+          },
+        );
         return { opacity };
       }
     }

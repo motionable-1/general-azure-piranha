@@ -147,9 +147,7 @@ const WebContent = ({ dark = false }: { dark?: boolean }) => (
             background: dark ? "#18181b" : "white",
             height: 120,
             borderRadius: 12,
-            boxShadow: dark
-              ? "0 0 0 1px #27272a"
-              : "0 1px 3px rgba(0,0,0,0.1)",
+            boxShadow: dark ? "0 0 0 1px #27272a" : "0 1px 3px rgba(0,0,0,0.1)",
             padding: 16,
           }}
         >

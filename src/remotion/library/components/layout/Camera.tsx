@@ -84,7 +84,7 @@ export interface CameraProps {
   wiggle?: number;
   /** Wiggle speed (default 1) */
   wiggleSpeed?: number;
-  /** 
+  /**
    * Constrain camera to content bounds to prevent showing areas outside the wrapped content.
    * When enabled, limits zoom-out and panning based on scale.
    * @default false
@@ -120,7 +120,7 @@ function parsePosition(
  * Calculate the maximum allowed pan distance for a given scale.
  * At scale 1.0, no panning is allowed (content exactly fills frame).
  * At scale 2.0, can pan up to 50% of dimension (seeing 50% of content).
- * 
+ *
  * Formula: maxPan = (1 - 1/scale) / 2 * dimension
  */
 function calculateMaxPan(scale: number, dimension: number): number {
@@ -148,15 +148,15 @@ function constrainCamera(
 ): { x: number; y: number; scale: number } {
   // Enforce minimum scale
   const constrainedScale = Math.max(scale, minScale);
-  
+
   // Calculate max pan based on current scale
   const maxPanX = calculateMaxPan(constrainedScale, width);
   const maxPanY = calculateMaxPan(constrainedScale, height);
-  
+
   // Clamp x and y within allowed bounds
   const constrainedX = clamp(x, -maxPanX, maxPanX);
   const constrainedY = clamp(y, -maxPanY, maxPanY);
-  
+
   return {
     x: constrainedX,
     y: constrainedY,
@@ -400,17 +400,19 @@ export const Camera: React.FC<CameraProps> = ({
     if (wiggle <= 0) return { x: 0, y: 0, rotation: 0, rotateX: 0, rotateY: 0 };
 
     const time = (frame / fps) * wiggleSpeed;
-    
+
     // Scale wiggle intensity relative to resolution
-    const positionIntensity = wiggle * 10; 
+    const positionIntensity = wiggle * 10;
     const rotationIntensity = wiggle * 0.5;
 
     // Use different seeds/offsets for each axis to avoid linear movement
-    const x = noise2D('camera-x', time * 0.5, 0) * positionIntensity;
-    const y = noise2D('camera-y', time * 0.5 + 100, 0) * positionIntensity;
-    const rot = noise2D('camera-rot', time * 0.3 + 200, 0) * rotationIntensity;
-    const rotX = noise2D('camera-rotX', time * 0.3 + 300, 0) * rotationIntensity;
-    const rotY = noise2D('camera-rotY', time * 0.3 + 400, 0) * rotationIntensity;
+    const x = noise2D("camera-x", time * 0.5, 0) * positionIntensity;
+    const y = noise2D("camera-y", time * 0.5 + 100, 0) * positionIntensity;
+    const rot = noise2D("camera-rot", time * 0.3 + 200, 0) * rotationIntensity;
+    const rotX =
+      noise2D("camera-rotX", time * 0.3 + 300, 0) * rotationIntensity;
+    const rotY =
+      noise2D("camera-rotY", time * 0.3 + 400, 0) * rotationIntensity;
 
     return { x, y, rotation: rot, rotateX: rotX, rotateY: rotY };
   }, [frame, fps, wiggle, wiggleSpeed]);
@@ -420,14 +422,14 @@ export const Camera: React.FC<CameraProps> = ({
     let x = keyframeValues.x + wiggleValues.x;
     let y = keyframeValues.y + wiggleValues.y;
     let scale = keyframeValues.scale;
-    
+
     if (constrainToBounds) {
       const constrained = constrainCamera(x, y, scale, width, height, minScale);
       x = constrained.x;
       y = constrained.y;
       scale = constrained.scale;
     }
-    
+
     return {
       x,
       y,
@@ -436,28 +438,37 @@ export const Camera: React.FC<CameraProps> = ({
       rotateX: keyframeValues.rotateX + wiggleValues.rotateX,
       rotateY: keyframeValues.rotateY + wiggleValues.rotateY,
     };
-  }, [keyframeValues, wiggleValues, constrainToBounds, minScale, width, height]);
+  }, [
+    keyframeValues,
+    wiggleValues,
+    constrainToBounds,
+    minScale,
+    width,
+    height,
+  ]);
 
   const transform = useMemo(() => {
     const parts: string[] = [];
 
     // Apply in order: perspective, translate, rotate, scale
-    // Note: Perspective should be applied to parent or earlier in chain usually, 
+    // Note: Perspective should be applied to parent or earlier in chain usually,
     // but here we apply it to the element itself or we need a wrapper.
     // CSS perspective property on parent is better.
     // But we can use transform: perspective() too.
-    
+
     if (currentValues.x !== 0 || currentValues.y !== 0) {
-      parts.push(`translate3d(${-currentValues.x}px, ${-currentValues.y}px, 0)`);
+      parts.push(
+        `translate3d(${-currentValues.x}px, ${-currentValues.y}px, 0)`,
+      );
     }
     if (currentValues.rotation !== 0) {
       parts.push(`rotateZ(${-currentValues.rotation}deg)`);
     }
     if (currentValues.rotateX !== 0) {
-        parts.push(`rotateX(${-currentValues.rotateX}deg)`);
+      parts.push(`rotateX(${-currentValues.rotateX}deg)`);
     }
     if (currentValues.rotateY !== 0) {
-        parts.push(`rotateY(${-currentValues.rotateY}deg)`);
+      parts.push(`rotateY(${-currentValues.rotateY}deg)`);
     }
     if (currentValues.scale !== 1) {
       parts.push(`scale(${currentValues.scale})`);
@@ -475,13 +486,15 @@ export const Camera: React.FC<CameraProps> = ({
         ...style,
       }}
     >
-      <div style={{ 
-          width: "100%", 
-          height: "100%", 
-          transform, 
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          transform,
           transformOrigin: origin,
-          transformStyle: "preserve-3d" 
-      }}>
+          transformStyle: "preserve-3d",
+        }}
+      >
         {children}
       </div>
     </AbsoluteFill>
@@ -515,7 +528,7 @@ export interface ZoomProps {
 
 /**
  * Simple zoom effect (Ken Burns style).
- * 
+ *
  * @example
  * // Safe zoom that never shows edges
  * <Zoom from={1.2} to={1.5} constrainToBounds>
@@ -563,7 +576,7 @@ export interface PanProps {
   toX?: number | string;
   /** Ending Y position */
   toY?: number | string;
-  /** 
+  /**
    * Scale/zoom level during pan.
    * Must be > 1 to allow panning without showing edges.
    * @default 1.3
@@ -585,7 +598,7 @@ export interface PanProps {
 /**
  * Simple pan effect with zoom.
  * Note: Panning requires scale > 1 to avoid showing edges.
- * 
+ *
  * @example
  * // Safe pan that stays within bounds
  * <Pan fromX={-50} toX={50} scale={1.3} constrainToBounds>
@@ -627,12 +640,12 @@ export const Pan: React.FC<PanProps> = ({
 
 export interface PushInProps {
   children: ReactNode;
-  /** 
+  /**
    * Starting scale.
    * @default 1.1
    */
   startScale?: number;
-  /** 
+  /**
    * Target scale to push into.
    * @default 1.8
    */
@@ -706,7 +719,7 @@ export const PushIn: React.FC<PushInProps> = ({
 
 export interface PullOutProps {
   children: ReactNode;
-  /** 
+  /**
    * Starting scale (zoomed in).
    * @default 2
    */
@@ -765,7 +778,13 @@ export const PullOut: React.FC<PullOutProps> = ({
     <Camera
       keyframes={[
         { frame: startFrame, x: startX, y: startY, scale: startScale },
-        { frame: startFrame + durationFrames, x: 0, y: 0, scale: endScale, easing },
+        {
+          frame: startFrame + durationFrames,
+          x: 0,
+          y: 0,
+          scale: endScale,
+          easing,
+        },
       ]}
       origin={origin}
       constrainToBounds={constrainToBounds}

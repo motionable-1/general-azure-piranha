@@ -41,10 +41,7 @@ export interface SplitFlapProps {
  * Deterministic character resolver. Given a progress value 0..1, cycles through
  * intermediate characters before settling on the target character.
  */
-function resolveCharacter(
-  progress: number,
-  targetChar: string,
-): string {
+function resolveCharacter(progress: number, targetChar: string): string {
   if (progress >= 1) return targetChar;
   if (progress <= 0) return " ";
 
@@ -81,7 +78,16 @@ const FlapCell: React.FC<{
   textColor: string;
   backgroundColor: string;
   dividerColor: string;
-}> = ({ char, width, height, fontSize, fontFamily, textColor, backgroundColor, dividerColor }) => {
+}> = ({
+  char,
+  width,
+  height,
+  fontSize,
+  fontFamily,
+  textColor,
+  backgroundColor,
+  dividerColor,
+}) => {
   const cellStyle: CSSProperties = {
     width,
     height,

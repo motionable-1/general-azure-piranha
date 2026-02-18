@@ -45,7 +45,6 @@ export interface CircleLayoutProps {
   className?: string;
 }
 
-
 /**
  * Arrange items in a circle with optional animation.
  *

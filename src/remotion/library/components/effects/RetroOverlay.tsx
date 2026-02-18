@@ -39,7 +39,9 @@ export const RetroOverlay: React.FC<RetroOverlayProps> = ({
   // Deterministic glitch offset
   const seed = Math.floor(frame * speed);
   const glitchActive = random(`retro-glitch-${seed}`) > 0.92;
-  const glitchOffset = glitchActive ? (random(`retro-goff-${seed}`) - 0.5) * 20 * intensity : 0;
+  const glitchOffset = glitchActive
+    ? (random(`retro-goff-${seed}`) - 0.5) * 20 * intensity
+    : 0;
 
   // Tracking line position
   const trackingY = ((time * 30) % (height + 40)) - 20;
@@ -101,8 +103,18 @@ export const RetroOverlay: React.FC<RetroOverlayProps> = ({
         >
           <defs>
             <filter id={`${filterId}-chroma`}>
-              <feOffset in="SourceGraphic" dx={colorBleed + glitchOffset} dy={0} result="red" />
-              <feOffset in="SourceGraphic" dx={-colorBleed} dy={0} result="blue" />
+              <feOffset
+                in="SourceGraphic"
+                dx={colorBleed + glitchOffset}
+                dy={0}
+                result="red"
+              />
+              <feOffset
+                in="SourceGraphic"
+                dx={-colorBleed}
+                dy={0}
+                result="blue"
+              />
               <feColorMatrix
                 in="red"
                 type="matrix"
@@ -121,7 +133,12 @@ export const RetroOverlay: React.FC<RetroOverlayProps> = ({
               </feMerge>
             </filter>
           </defs>
-          <rect width="100%" height="100%" filter={`url(#${filterId}-chroma)`} fill="transparent" />
+          <rect
+            width="100%"
+            height="100%"
+            filter={`url(#${filterId}-chroma)`}
+            fill="transparent"
+          />
         </svg>
       )}
 
@@ -245,8 +262,12 @@ export const RetroOverlay: React.FC<RetroOverlayProps> = ({
                 borderWidth: 0,
                 ...(i === 0 ? { borderTopWidth: 1, borderLeftWidth: 1 } : {}),
                 ...(i === 1 ? { borderTopWidth: 1, borderRightWidth: 1 } : {}),
-                ...(i === 2 ? { borderBottomWidth: 1, borderLeftWidth: 1 } : {}),
-                ...(i === 3 ? { borderBottomWidth: 1, borderRightWidth: 1 } : {}),
+                ...(i === 2
+                  ? { borderBottomWidth: 1, borderLeftWidth: 1 }
+                  : {}),
+                ...(i === 3
+                  ? { borderBottomWidth: 1, borderRightWidth: 1 }
+                  : {}),
                 zIndex: 5,
               }}
             />

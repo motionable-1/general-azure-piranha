@@ -29,7 +29,14 @@ type Story = StoryObj<typeof SplitFlap>;
 export const DepartureBoard: Story = {
   args: { text: "DEPARTING 14:30" },
   render: (args) => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "#111" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#111",
+      }}
+    >
       <SplitFlap {...args} fontSize={36} charWidth={44} charHeight={56} />
     </AbsoluteFill>
   ),
@@ -37,7 +44,14 @@ export const DepartureBoard: Story = {
 
 export const Countdown: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "#0a0a1a" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#0a0a1a",
+      }}
+    >
       <SplitFlap
         text="00:30:00"
         fontSize={48}
@@ -52,9 +66,30 @@ export const Countdown: Story = {
 
 export const StaggeredReveal: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 20, background: "#111" }}>
-      <SplitFlap text="HELLO" fontSize={40} delay={0} stagger={0.08} textColor="#FF6B6B" />
-      <SplitFlap text="WORLD" fontSize={40} delay={0.5} stagger={0.08} textColor="#4ECDC4" />
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 20,
+        background: "#111",
+      }}
+    >
+      <SplitFlap
+        text="HELLO"
+        fontSize={40}
+        delay={0}
+        stagger={0.08}
+        textColor="#FF6B6B"
+      />
+      <SplitFlap
+        text="WORLD"
+        fontSize={40}
+        delay={0.5}
+        stagger={0.08}
+        textColor="#4ECDC4"
+      />
     </AbsoluteFill>
   ),
 };

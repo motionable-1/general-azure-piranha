@@ -1,6 +1,9 @@
 import React from "react";
 import { AbsoluteFill, interpolate } from "remotion";
-import type { TransitionPresentation, TransitionPresentationComponentProps } from "@remotion/transitions";
+import type {
+  TransitionPresentation,
+  TransitionPresentationComponentProps,
+} from "@remotion/transitions";
 
 export type MorphShape = "circle" | "rounded";
 
@@ -15,7 +18,9 @@ function getClipPath(shape: MorphShape, insetPercent: number): string {
   return `inset(${insetPercent}% round ${round})`;
 }
 
-const MorphComponent: React.FC<TransitionPresentationComponentProps<MorphProps>> = ({
+const MorphComponent: React.FC<
+  TransitionPresentationComponentProps<MorphProps>
+> = ({
   children,
   presentationDirection,
   presentationProgress,
@@ -90,7 +95,9 @@ const MorphComponent: React.FC<TransitionPresentationComponentProps<MorphProps>>
   );
 };
 
-export const morph = (props?: Partial<MorphProps>): TransitionPresentation<MorphProps> => {
+export const morph = (
+  props?: Partial<MorphProps>,
+): TransitionPresentation<MorphProps> => {
   const shape = props?.shape ?? "circle";
   const contract = props?.contract ?? 25;
   const blur = props?.blur ?? 6;

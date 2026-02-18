@@ -33,9 +33,13 @@ const SampleContent = () => (
       justifyContent: "center",
     }}
   >
-    <div style={{ color: "#fff", fontFamily: "system-ui", textAlign: "center" }}>
+    <div
+      style={{ color: "#fff", fontFamily: "system-ui", textAlign: "center" }}
+    >
       <div style={{ fontSize: 48, fontWeight: 800 }}>HELLO</div>
-      <div style={{ fontSize: 16, opacity: 0.7, letterSpacing: 4 }}>PIXELATED WORLD</div>
+      <div style={{ fontSize: 16, opacity: 0.7, letterSpacing: 4 }}>
+        PIXELATED WORLD
+      </div>
     </div>
   </AbsoluteFill>
 );

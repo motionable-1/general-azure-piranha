@@ -27,8 +27,22 @@ type Story = StoryObj<typeof Letterbox>;
 export const Default: Story = {
   args: { size: 0.1, animateIn: 0.8 },
   render: (args) => (
-    <AbsoluteFill style={{ background: "linear-gradient(135deg, #667eea, #764ba2)" }}>
-      <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 48, fontWeight: 700, fontFamily: "system-ui" }}>
+    <AbsoluteFill
+      style={{ background: "linear-gradient(135deg, #667eea, #764ba2)" }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#fff",
+          fontSize: 48,
+          fontWeight: 700,
+          fontFamily: "system-ui",
+        }}
+      >
         CINEMATIC
       </div>
       <Letterbox {...args} />
@@ -39,7 +53,18 @@ export const Default: Story = {
 export const WideScreen: Story = {
   render: () => (
     <AbsoluteFill style={{ background: "#111" }}>
-      <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 32, fontFamily: "system-ui" }}>
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#fff",
+          fontSize: 32,
+          fontFamily: "system-ui",
+        }}
+      >
         2.39:1 Aspect Ratio
       </div>
       <Letterbox size={0.13} animateIn={1.2} color="#000" />

@@ -14,7 +14,20 @@ const meta: Meta<typeof Duotone> = {
     ),
   ],
   argTypes: {
-    preset: { control: "select", options: ["midnight", "sunset", "neon", "vintage", "ocean", "fire", "forest", "candy", "monochrome"] },
+    preset: {
+      control: "select",
+      options: [
+        "midnight",
+        "sunset",
+        "neon",
+        "vintage",
+        "ocean",
+        "fire",
+        "forest",
+        "candy",
+        "monochrome",
+      ],
+    },
     intensity: { control: { type: "range", min: 0, max: 1, step: 0.05 } },
     shadowColor: { control: "color" },
     highlightColor: { control: "color" },
@@ -25,8 +38,25 @@ export default meta;
 type Story = StoryObj<typeof Duotone>;
 
 const SampleContent = () => (
-  <div style={{ width: "100%", height: "100%", background: "linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-    <div style={{ fontSize: 48, fontWeight: 900, color: "#fff", fontFamily: "system-ui" }}>
+  <div
+    style={{
+      width: "100%",
+      height: "100%",
+      background:
+        "linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}
+  >
+    <div
+      style={{
+        fontSize: 48,
+        fontWeight: 900,
+        color: "#fff",
+        fontFamily: "system-ui",
+      }}
+    >
       COLOR GRADE
     </div>
   </div>
@@ -41,12 +71,44 @@ export const AllPresets: Story = {
     ),
   ],
   render: () => (
-    <AbsoluteFill style={{ display: "flex", flexWrap: "wrap", gap: 8, padding: 20 }}>
-      {(["midnight", "sunset", "neon", "vintage", "ocean", "fire", "forest", "candy", "monochrome"] as const).map((p) => (
+    <AbsoluteFill
+      style={{ display: "flex", flexWrap: "wrap", gap: 8, padding: 20 }}
+    >
+      {(
+        [
+          "midnight",
+          "sunset",
+          "neon",
+          "vintage",
+          "ocean",
+          "fire",
+          "forest",
+          "candy",
+          "monochrome",
+        ] as const
+      ).map((p) => (
         <div key={p} style={{ width: "31%", position: "relative" }}>
           <Duotone preset={p} style={{ width: "100%", height: 100 }}>
-            <div style={{ width: "100%", height: 100, background: "linear-gradient(135deg, #667eea, #764ba2)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <span style={{ color: "#fff", fontSize: 14, fontWeight: 700, fontFamily: "system-ui" }}>{p}</span>
+            <div
+              style={{
+                width: "100%",
+                height: 100,
+                background: "linear-gradient(135deg, #667eea, #764ba2)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <span
+                style={{
+                  color: "#fff",
+                  fontSize: 14,
+                  fontWeight: 700,
+                  fontFamily: "system-ui",
+                }}
+              >
+                {p}
+              </span>
             </div>
           </Duotone>
         </div>

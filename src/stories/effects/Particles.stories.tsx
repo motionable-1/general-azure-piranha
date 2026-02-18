@@ -15,7 +15,10 @@ const meta: Meta<typeof Particles> = {
   ],
   argTypes: {
     count: { control: { type: "range", min: 10, max: 200, step: 10 } },
-    type: { control: "select", options: ["confetti", "sparks", "dust", "snow", "bubbles", "stars"] },
+    type: {
+      control: "select",
+      options: ["confetti", "sparks", "dust", "snow", "bubbles", "stars"],
+    },
     speed: { control: { type: "range", min: 0.1, max: 3, step: 0.1 } },
     gravity: { control: { type: "range", min: -200, max: 200, step: 10 } },
     wind: { control: { type: "range", min: -100, max: 100, step: 5 } },
@@ -70,7 +73,9 @@ export const Snow: Story = {
     ),
   ],
   render: () => (
-    <AbsoluteFill style={{ background: "linear-gradient(180deg, #0f1923, #1a2332)" }}>
+    <AbsoluteFill
+      style={{ background: "linear-gradient(180deg, #0f1923, #1a2332)" }}
+    >
       <Particles type="snow" count={100} speed={0.5} wind={15} />
     </AbsoluteFill>
   ),
@@ -78,7 +83,9 @@ export const Snow: Story = {
 
 export const Dust: Story = {
   render: () => (
-    <AbsoluteFill style={{ background: "linear-gradient(135deg, #2c1810, #3d2317)" }}>
+    <AbsoluteFill
+      style={{ background: "linear-gradient(135deg, #2c1810, #3d2317)" }}
+    >
       <Particles type="dust" count={40} speed={0.3} />
     </AbsoluteFill>
   ),
@@ -86,7 +93,9 @@ export const Dust: Story = {
 
 export const Bubbles: Story = {
   render: () => (
-    <AbsoluteFill style={{ background: "linear-gradient(180deg, #006994, #003d5b)" }}>
+    <AbsoluteFill
+      style={{ background: "linear-gradient(180deg, #006994, #003d5b)" }}
+    >
       <Particles type="bubbles" count={30} speed={0.6} />
     </AbsoluteFill>
   ),

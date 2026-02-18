@@ -20,7 +20,13 @@ type Story = StoryObj<typeof PieChart>;
 
 export const Donut: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <PieChart
         slices={[
           { value: 40, color: "#FF6B6B", label: "Design" },
@@ -39,7 +45,13 @@ export const Donut: Story = {
 
 export const FullPie: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <PieChart
         slices={[
           { value: 55, color: "#4ECDC4" },
@@ -57,7 +69,14 @@ export const FullPie: Story = {
 
 export const Dashboard: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 40 }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 40,
+      }}
+    >
       <PieChart
         slices={[
           { value: 72, color: "#4ECDC4" },

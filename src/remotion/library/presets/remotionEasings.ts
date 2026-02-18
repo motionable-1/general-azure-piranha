@@ -106,9 +106,7 @@ function parseGsapEasing(gsapString: string): EasingFn {
   }
 
   // Parse pattern: "<type>.<direction>(<params>)"
-  const match = gsapString.match(
-    /^(\w+)\.(in|out|inOut)(?:\(([^)]*)\))?$/
-  );
+  const match = gsapString.match(/^(\w+)\.(in|out|inOut)(?:\(([^)]*)\))?$/);
   if (!match) return Easing.linear;
 
   const [, type, direction, paramsStr] = match;
@@ -121,7 +119,9 @@ function parseGsapEasing(gsapString: string): EasingFn {
     return wrap(Easing.back(overshoot));
   }
   if (type === "elastic") {
-    const params = paramsStr ? paramsStr.split(",").map((s) => parseFloat(s.trim())) : [1];
+    const params = paramsStr
+      ? paramsStr.split(",").map((s) => parseFloat(s.trim()))
+      : [1];
     return wrap(Easing.elastic(params[0]));
   }
   if (type === "poly") {

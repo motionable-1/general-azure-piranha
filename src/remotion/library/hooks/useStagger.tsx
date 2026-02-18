@@ -242,7 +242,10 @@ export function createStagger(config: StaggerConfig): gsap.StaggerVars {
     };
   }
 
-  const fromMap: Record<StaggerPattern, "start" | "end" | "center" | "edges" | "random"> = {
+  const fromMap: Record<
+    StaggerPattern,
+    "start" | "end" | "center" | "edges" | "random"
+  > = {
     start: "start",
     end: "end",
     center: "center",

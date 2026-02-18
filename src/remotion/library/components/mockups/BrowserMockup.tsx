@@ -372,7 +372,12 @@ const ChromeBrowser: React.FC<{
             </span>
             <span style={{ opacity: 0.6 }}>
               {url.replace(/^https?:\/\//, "").includes("/")
-                ? "/" + url.replace(/^https?:\/\//, "").split("/").slice(1).join("/")
+                ? "/" +
+                  url
+                    .replace(/^https?:\/\//, "")
+                    .split("/")
+                    .slice(1)
+                    .join("/")
                 : ""}
             </span>
           </div>
@@ -382,7 +387,9 @@ const ChromeBrowser: React.FC<{
         </div>
 
         {/* Actions */}
-        <div style={{ display: "flex", gap: 12, opacity: 0.6, paddingRight: 4 }}>
+        <div
+          style={{ display: "flex", gap: 12, opacity: 0.6, paddingRight: 4 }}
+        >
           <div
             style={{
               width: 20,
@@ -554,22 +561,36 @@ const ArcBrowser: React.FC<{
 
         {/* URL Bar for Arc (Sidebar top) */}
         <div
-           style={{
-             width: 56,
-             height: 36,
-             borderRadius: 10,
-             background: colors.tabBg,
-             display: 'flex',
-             alignItems: 'center',
-             justifyContent: 'center',
-             marginBottom: 8,
-             opacity: 0.8
-           }}
+          style={{
+            width: 56,
+            height: 36,
+            borderRadius: 10,
+            background: colors.tabBg,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: 8,
+            opacity: 0.8,
+          }}
         >
-           <div style={{ width: 16, height: 2, background: colors.textMuted, borderRadius: 1 }} />
+          <div
+            style={{
+              width: 16,
+              height: 2,
+              background: colors.textMuted,
+              borderRadius: 1,
+            }}
+          />
         </div>
 
-        <div style={{ width: 40, height: 1, background: colors.border, margin: '4px 0' }} />
+        <div
+          style={{
+            width: 40,
+            height: 1,
+            background: colors.border,
+            margin: "4px 0",
+          }}
+        />
 
         {/* Space tabs */}
         {[arcAccent, "#3b82f6", "#22c55e"].map((color, i) => (
@@ -579,7 +600,7 @@ const ArcBrowser: React.FC<{
               width: 44,
               height: 44,
               borderRadius: 12,
-              background: i === 0 ? color : 'transparent',
+              background: i === 0 ? color : "transparent",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -589,7 +610,7 @@ const ArcBrowser: React.FC<{
               boxShadow: i === 0 ? "0 2px 5px rgba(0,0,0,0.15)" : "none",
             }}
           >
-             {i === 0 ? "★" : i === 1 ? "●" : "▲"}
+            {i === 0 ? "★" : i === 1 ? "●" : "▲"}
           </div>
         ))}
 
@@ -605,7 +626,7 @@ const ArcBrowser: React.FC<{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            opacity: 0.7
+            opacity: 0.7,
           }}
         >
           <PlusIcon color={colors.textMuted} />

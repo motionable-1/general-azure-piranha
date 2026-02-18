@@ -55,9 +55,18 @@ export const Default: Story = {
     shadow: true,
   },
   render: (args) => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <MockupPresentation {...args}>
-        <MockCard color="linear-gradient(135deg, #667eea 0%, #764ba2 100%)" label="3D Card" />
+        <MockCard
+          color="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+          label="3D Card"
+        />
       </MockupPresentation>
     </AbsoluteFill>
   ),
@@ -65,9 +74,24 @@ export const Default: Story = {
 
 export const FloatingCard: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-      <MockupPresentation rotateX={10} rotateY={-20} float={20} floatSpeed={1} shadow>
-        <MockCard color="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" label="Floating" />
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <MockupPresentation
+        rotateX={10}
+        rotateY={-20}
+        float={20}
+        floatSpeed={1}
+        shadow
+      >
+        <MockCard
+          color="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+          label="Floating"
+        />
       </MockupPresentation>
     </AbsoluteFill>
   ),
@@ -75,9 +99,18 @@ export const FloatingCard: Story = {
 
 export const WithReflection: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <MockupPresentation rotateY={-12} shadow reflection>
-        <MockCard color="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" label="Reflection" />
+        <MockCard
+          color="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
+          label="Reflection"
+        />
       </MockupPresentation>
     </AbsoluteFill>
   ),
@@ -85,7 +118,13 @@ export const WithReflection: Story = {
 
 export const FlatPresentation: Story = {
   render: () => (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <MockupPresentation rotateX={25} rotateY={0} float={15} shadow>
         <div
           style={{
@@ -97,13 +136,51 @@ export const FlatPresentation: Story = {
             border: "1px solid rgba(255,255,255,0.1)",
           }}
         >
-          <div style={{ height: 32, background: "rgba(255,255,255,0.05)", display: "flex", alignItems: "center", padding: "0 12px", gap: 6 }}>
-            <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#FF5F56" }} />
-            <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#FFBD2E" }} />
-            <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#27C93F" }} />
+          <div
+            style={{
+              height: 32,
+              background: "rgba(255,255,255,0.05)",
+              display: "flex",
+              alignItems: "center",
+              padding: "0 12px",
+              gap: 6,
+            }}
+          >
+            <div
+              style={{
+                width: 10,
+                height: 10,
+                borderRadius: "50%",
+                background: "#FF5F56",
+              }}
+            />
+            <div
+              style={{
+                width: 10,
+                height: 10,
+                borderRadius: "50%",
+                background: "#FFBD2E",
+              }}
+            />
+            <div
+              style={{
+                width: 10,
+                height: 10,
+                borderRadius: "50%",
+                background: "#27C93F",
+              }}
+            />
           </div>
-          <div style={{ padding: 16, color: "#c9d1d9", fontFamily: "monospace", fontSize: 13 }}>
-            <span style={{ color: "#ff7b72" }}>const</span> app = <span style={{ color: "#d2a8ff" }}>createApp</span>();
+          <div
+            style={{
+              padding: 16,
+              color: "#c9d1d9",
+              fontFamily: "monospace",
+              fontSize: 13,
+            }}
+          >
+            <span style={{ color: "#ff7b72" }}>const</span> app ={" "}
+            <span style={{ color: "#d2a8ff" }}>createApp</span>();
           </div>
         </div>
       </MockupPresentation>

@@ -1,7 +1,13 @@
 import React, { useMemo } from "react";
 import { useCurrentFrame, useVideoConfig, random } from "remotion";
 
-export type ParticleType = "confetti" | "sparks" | "dust" | "snow" | "bubbles" | "stars";
+export type ParticleType =
+  | "confetti"
+  | "sparks"
+  | "dust"
+  | "snow"
+  | "bubbles"
+  | "stars";
 
 export interface ParticlesProps {
   /** Number of particles */
@@ -42,11 +48,23 @@ interface Particle {
 }
 
 const DEFAULT_COLORS: Record<ParticleType, string[]> = {
-  confetti: ["#FF6B6B", "#4ECDC4", "#FFE66D", "#A78BFA", "#F472B6", "#34D399", "#60A5FA"],
+  confetti: [
+    "#FF6B6B",
+    "#4ECDC4",
+    "#FFE66D",
+    "#A78BFA",
+    "#F472B6",
+    "#34D399",
+    "#60A5FA",
+  ],
   sparks: ["#FFD700", "#FFA500", "#FF6347", "#FFFFFF", "#FFE4B5"],
   dust: ["#D4C5A9", "#C4B08B", "#9E9075", "#B8A88A"],
   snow: ["#FFFFFF", "#E8F0FE", "#D1E3FF", "#F0F4FF"],
-  bubbles: ["rgba(255,255,255,0.3)", "rgba(173,216,230,0.4)", "rgba(135,206,250,0.3)"],
+  bubbles: [
+    "rgba(255,255,255,0.3)",
+    "rgba(173,216,230,0.4)",
+    "rgba(135,206,250,0.3)",
+  ],
   stars: ["#FFFFFF", "#FFD700", "#FFF8DC", "#FFFACD"],
 };
 
@@ -134,7 +152,11 @@ export const Particles: React.FC<ParticlesProps> = ({
         if (t <= 0) return null;
 
         // Physics: position = initial + velocity*t + 0.5*gravity*t^2
-        const px = p.x + p.vx * t + wind * t + Math.sin(t * p.wobbleSpeed + p.wobblePhase) * 20;
+        const px =
+          p.x +
+          p.vx * t +
+          wind * t +
+          Math.sin(t * p.wobbleSpeed + p.wobblePhase) * 20;
         const py = p.y + p.vy * t + 0.5 * grav * t * t;
 
         // Wrap around screen edges
@@ -145,7 +167,8 @@ export const Particles: React.FC<ParticlesProps> = ({
 
         // Fade based on type
         const fadeIn = Math.min(1, t * 3);
-        const opacity = type === "sparks" ? Math.max(0, 1 - t * 0.8) * fadeIn : fadeIn;
+        const opacity =
+          type === "sparks" ? Math.max(0, 1 - t * 0.8) * fadeIn : fadeIn;
 
         if (opacity <= 0) return null;
 
@@ -157,7 +180,8 @@ export const Particles: React.FC<ParticlesProps> = ({
               left: wrappedX,
               top: wrappedY,
               width: p.size,
-              height: type === "confetti" ? p.size * (0.6 + p.shape * 0.8) : p.size,
+              height:
+                type === "confetti" ? p.size * (0.6 + p.shape * 0.8) : p.size,
               opacity,
               transform: `translate(-50%, -50%) rotate(${rot}deg)${type === "confetti" ? ` scaleX(${Math.cos(t * 5 + p.wobblePhase)})` : ""}`,
               ...getParticleStyle(type, p),

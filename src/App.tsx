@@ -91,9 +91,9 @@ export const App = () => {
               fps={composition.fps}
               compositionHeight={composition.height}
               compositionWidth={composition.width}
-            controls
-            autoPlay={shouldAutoPlay}
-            style={playerSize}
+              controls
+              autoPlay={shouldAutoPlay}
+              style={playerSize}
               allowFullscreen
               doubleClickToFullscreen
               initialFrame={initialFrame ?? 0}
